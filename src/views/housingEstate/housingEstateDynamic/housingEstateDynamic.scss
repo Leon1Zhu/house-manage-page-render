@@ -1,0 +1,71 @@
+@import "../../../styles/globalscss";
+
+.house-dynamic {
+  border-bottom: vm(1) solid rgba(126, 125, 125, 0.27);
+  padding-bottom: 20px;
+  font-family: PingFangSC;
+   .house-dynamic-title {
+    display: flex;
+    span {
+      display: inline-block;
+    }
+    .temp-span {
+      flex: 1;
+    }
+    .name {
+      font-size: vm(18);
+      font-family: MicrosoftYaHei;
+      color: #000000;
+      line-height: vm(23);
+      font-weight: 600;
+    }
+    .view-all {
+        font-size: vm(16);
+        font-family: PingFangSC;
+        color: #858585;
+        line-height: vm(23);
+        .icon {
+          font-size: vm(16);
+          color: #858585;
+          line-height: vm(23);
+        }
+    }
+    
+  }
+  .house-dynamic-content {
+        
+    .dynamic-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: vm(10);
+        .title {
+           color: #000000;
+           font-size: vm(13);
+           opacity: 0.9028;
+           line-height: vm(19);
+           span {
+            font-weight: 600;
+           }
+        }
+        .new {
+            text-align: center;
+            width: vm(35);
+            height: vm(17);
+            border-radius:vm(1);
+            background-color: #0284DC;
+            color: #ffffff;
+            font-size: vm(10);
+            line-height: vm(14);
+            padding-top:vm(2);
+        }
+    }
+    p {
+        color: #858585;
+        font-size: vm(10);
+        line-height: vm(14);
+        word-wrap:break-word;
+        margin-top: vm(10);
+    }
+}
+}

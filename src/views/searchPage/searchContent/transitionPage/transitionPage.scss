@@ -1,0 +1,96 @@
+/**
+  @author zhuliang
+  @date 2018/10/16 下午2:48
+*/
+@import "../../../../styles/globalscss";
+
+$selectedColor:#ffa000;
+
+.search-transition-page {
+  z-index: 100;
+  margin-top: vm($padding-width);
+  position: absolute;
+  width: 100%;
+  .mu-tsransition-box {
+    display: flex;
+  }
+  .search-left, .search-right {
+    flex: 1;
+    text-align: center;
+    li {
+      padding: vm(10) 0;
+      color: rgba(0, 0, 0, .55);
+      & span.active {
+        position: relative;
+        color: #ffa000;
+        &:after {
+          content: ' ';
+          height: vm(1);
+          width: 110%;
+          margin-left: -5%;
+          margin-top: vm(5);
+          background: #ffa000;
+          position: absolute;
+          bottom: vm(-3);
+          left: 0;
+        }
+      }
+    }
+  }
+  .search-right {
+    background: rgba(234, 234, 234, .3);
+  }
+  .priceBG {
+    background: #FFF;
+  }
+
+  .mu-slider-display-value {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    top: -70px;
+  }
+  .price-selected-content {
+    margin-top: vm(5);
+    position: relative;
+    .price-silder {
+      display: flex;
+      padding: 0 vm(6);
+      .mu-slider-fill, .mu-slider-display-value  {
+        background: $selectedColor;
+      }
+      .mu-slider:first-child {
+        .mu-slider-track {
+          background: $selectedColor;
+        }
+
+        .mu-slider-fill {
+          background: rgb(189, 189, 189);
+        }
+      }
+      .mu-slider-thumb {
+        color: $selectedColor;
+        background: $selectedColor;
+        border: 2px solid $selectedColor;
+      }
+    }
+
+    .selected-price {
+      display: inline-block;
+      color: $selectedColor;
+      border-bottom: 1px solid $selectedColor;
+      padding-bottom: vm(10);
+      margin-bottom: vm(10);
+    }
+  }
+  .price-selected-content:after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: vm(1);
+    background: #bdbdbd;
+    transform: scaley(.5);
+  }
+}

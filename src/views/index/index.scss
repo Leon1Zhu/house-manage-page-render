@@ -1,0 +1,16 @@
+@import '../../styles/globalscss';
+
+
+#index-content-item {
+  position: relative;
+  overflow: hidden;
+  .introduce-content{
+    padding: vm(10) vm($padding-width) 0;
+  }
+  .wrapper {
+    height: calc(100vh - 14.4vmin);
+  }
+  .drop-down {
+    top: vm(44);
+  }
+}

@@ -143,7 +143,6 @@
           this.scroll.on('touchEnd', (pos) => {
             // 下拉动作
             if (pos.y > 40) {
-              alert(pos.y)
               this.$emit('pulldown')
             }
 

@@ -69,7 +69,7 @@ export default {
       }).catch(() => {});
     },
     loadData() {
-      alert(1111);
+      // TODO 加载数据
     },
     refreshData() {
       this.index = 0;

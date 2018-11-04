@@ -65,7 +65,7 @@ export default {
   methods: {
     initGuessLikeData() {
       indexApi.getLikeHouse(this.index, this.pagesize).then((response) => {
-
+        
       }).catch(() => {});
     },
     loadData() {

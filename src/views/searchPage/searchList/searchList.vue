@@ -76,8 +76,7 @@ export default {
   created() {},
   mounted() {},
   methods: {
-    loadData() {
-    },
+    loadData() {},
     refreshData() {
       this.index = 0;
     }

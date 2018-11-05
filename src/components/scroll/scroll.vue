@@ -4,12 +4,15 @@
 -->
 <template>
   <div ref="wrapper" class="scroll-content">
-    <p class="drop-down" v-if="dropDown && pulldown">松手刷新数据...</p>
-    <slot></slot>
-    <p class="drop-up" v-if="dropup && pullup">
-      <mu-circular-progress class="demo-circular-progress" :size="24"></mu-circular-progress>
-      <span>松手加载更多</span>
-    </p>
+    <div class="content">
+      <div class="drop-down" v-if="dropDown && pulldown">松手刷新数据...</div>
+      <slot></slot>
+      <!-- -->
+      <div class="drop-up" v-if="dropup && pullup">
+        <span v-if="!loadingData">{{loadMore}}</span>
+        <mu-circular-progress v-else class="demo-circular-progress" :size="24"></mu-circular-progress>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,6 +22,14 @@
 
   export default {
     props: {
+      loadingData: {
+        type: Boolean,
+        default: false,
+      },
+      loadMore: {
+        type: String,
+        default: '松手加载更多',
+      },
       /**
        * 1 滚动的时候会派发scroll事件，会截流。
        * 2 滚动的时候实时派发scroll事件，不会截流。
@@ -194,20 +205,17 @@
 
  <style scoped>
    .drop-down, .drop-up{
-     position: absolute;
-     left:0px;
+     position: relative;
      width: 100%;
-     height: 50px;
-     line-height:50px;
      text-align: center;
      font-size:14px;
      color:#CCC;
    }
    .drop-down {
-     top: 0;
+     margin-bottom: 10px;
    }
 
    .drop-up {
-     bottom: 0px;
+     margin-top: 15px;
    }
  </style>

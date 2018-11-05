@@ -10,8 +10,11 @@
               :pulldown="true"
               :pullup="true"
               @pulldown="refreshData()"
-              @pullup="loadData()">
-        <ul class="content">
+              @pullup="loadData()"
+              :loadMore="loadMore"
+              :loadingData="loadingData"
+              ref="indexScroll">
+        <ul >
           <li class="like-content" >
             <swiper-content></swiper-content>
           </li>
@@ -22,7 +25,7 @@
             <highQualityHouse></highQualityHouse>
           </li>
           <li class="like-content" >
-            <guess-like></guess-like>
+            <guess-like :data="gusessLikeData"></guess-like>
           </li>
         </ul>
       </scroll>
@@ -47,6 +50,10 @@ export default {
     return {
       index: 1,
       pagesize: 10,
+      total: 0,
+      loadMore: '松手加载更多',
+      gusessLikeData: [],
+      loadingData: false,
     };
   },
   components: {
@@ -65,15 +72,37 @@ export default {
   methods: {
     initGuessLikeData() {
       indexApi.getLikeHouse(this.index, this.pagesize).then((response) => {
-        
-      }).catch(() => {});
+        const data = response.data;
+        this.gusessLikeData = this.gusessLikeData.concat(data.content);
+        this.index = data.number;
+        this.total = data.totalPages;
+        this.loadingData = false;
+        this.judgeLast();
+        this.$nextTick(() => {
+          this.$refs.indexScroll.refresh();
+        })
+      }).catch(() => {
+        this.loadingData = false;
+      });
     },
     loadData() {
-      // TODO 加载数据
+      if (this.index === this.total) {
+        return ;
+      }
+      this.loadingData = true;
+      this.index++;
+      this.initGuessLikeData();
     },
     refreshData() {
       this.index = 0;
+      this.loadMore= '松手加载更多';
+      this.gusessLikeData = [];
       this.initGuessLikeData();
+    },
+    judgeLast() {
+      if (this.index === this.total) {
+        this.loadMore= '没有更多数据啦';
+      }
     }
   },
 };

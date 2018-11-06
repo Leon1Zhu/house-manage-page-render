@@ -28,7 +28,7 @@
       },
       loadMore: {
         type: String,
-        default: '松手加载更多',
+        default: '没有更多数据啦',
       },
       /**
        * 1 滚动的时候会派发scroll事件，会截流。

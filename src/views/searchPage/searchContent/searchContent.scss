@@ -76,6 +76,8 @@
     display: flex;
     padding: vm(8) vm($padding-width) vm(8);
     overflow: auto;
+    height: vm(23);
+    box-sizing: content-box;
     li {
       .mu-chip.demo-chip {
         border-radius: 0;

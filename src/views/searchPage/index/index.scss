@@ -2,3 +2,13 @@
   @author zhuliang
   @date 2018/10/16 上午11:05
 */
+
+#search-list-index {
+  &.hasSearchItem {
+    #search-list {
+      .wrapper {
+        height: calc(100vh - 51vmin);
+      }
+    }
+  }
+}

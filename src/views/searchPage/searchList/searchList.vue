@@ -8,7 +8,8 @@
             :pulldown="true"
             :pullUpLoad="true"
             @pulldown="refreshData()"
-            @pullup="loadData()">
+            @pullup="loadData()"
+            :loadingData="loadingData">
       <ul class="search-house-list">
         <li class="search-house-content" v-for="item in searchInfo">
           <div class="left-content">
@@ -54,6 +55,9 @@ export default {
   name: 'search-list',
   data() {
     return {
+      loadingData: true,
+      index: 0,
+      total: 0,
       searchInfo: [
         {},
         {},
@@ -79,6 +83,12 @@ export default {
     loadData() {},
     refreshData() {
       this.index = 0;
+      this.loadingData = true;
+    },
+    judgeLast() {
+      if (this.index === this.total) {
+        this.loadingData = false;
+      }
     }
   },
 };

@@ -11,7 +11,6 @@
               :pullup="true"
               @pulldown="refreshData()"
               @pullup="loadData()"
-              :loadMore="loadMore"
               :loadingData="loadingData"
               ref="indexScroll">
         <ul >
@@ -51,9 +50,8 @@ export default {
       index: 1,
       pagesize: 10,
       total: 0,
-      loadMore: '松手加载更多',
       gusessLikeData: [],
-      loadingData: false,
+      loadingData: true,
     };
   },
   components: {
@@ -76,14 +74,11 @@ export default {
         this.gusessLikeData = this.gusessLikeData.concat(data.content);
         this.index = data.number;
         this.total = data.totalPages;
-        this.loadingData = false;
         this.judgeLast();
         this.$nextTick(() => {
           this.$refs.indexScroll.refresh();
         })
-      }).catch(() => {
-        this.loadingData = false;
-      });
+      }).catch(() => {});
     },
     loadData() {
       if (this.index === this.total) {
@@ -95,13 +90,13 @@ export default {
     },
     refreshData() {
       this.index = 0;
-      this.loadMore= '松手加载更多';
+      this.loadMore= true;
       this.gusessLikeData = [];
       this.initGuessLikeData();
     },
     judgeLast() {
       if (this.index === this.total) {
-        this.loadMore= '没有更多数据啦';
+        this.loadingData = false;
       }
     }
   },

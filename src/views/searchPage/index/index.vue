@@ -3,8 +3,8 @@
   @date 2018/10/16 上午11:05
 -->
 <template>
-  <div id="search-list-index">
-    <search-content></search-content>
+  <div id="search-list-index" :class="{'hasSearchItem' : hasSelect}" >
+    <search-content ref="searchContent"></search-content>
     <search-list></search-list>
   </div>
 </template>
@@ -19,12 +19,21 @@ export default {
   data() {
     return {};
   },
+  computed: {
+    hasSelect() {
+      console.log( this.$refs.searchContent && Object.keys(this.$refs.searchContent.searchSelectObj).length)
+      return this.$refs.searchContent && Object.keys(this.$refs.searchContent.searchSelectObj).length > 0;
+    },
+  },
   components: {
     searchContent,
     searchList,
   },
   created() {},
-  mounted() {},
+  mounted() {
+    this.$nextTick(() => {
+    })
+  },
   methods: {},
 };
 </script>

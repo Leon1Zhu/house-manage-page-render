@@ -9,17 +9,19 @@
             请输入电话号码
           </slot>
         </div>
--->
+        -->
           <div class="modal-body">
-            <div class="mu-form-item mu-form-item__has-label">
-              <div class="mu-form-item-label" style="width: 100px;">Input</div><!---->
-              <div class="mu-form-item-content">
-                <mu-text-field v-model="form.input"></mu-text-field>
-              </div>
-            </div>
-            <input type="text" placeholder="  请输入电话号码" v-model="call" @input="handleFirstNameUpdate()"/>
+            <mu-form  class="mu-demo-form"  label-width="100">
+              <mu-form-item  label="姓名">
+                <mu-text-field v-model="name"  ></mu-text-field>
+              </mu-form-item>
+            </mu-form>
+            <mu-form  class="mu-demo-form"  label-width="100">
+              <mu-form-item  label="电话号码">
+                <mu-text-field v-model="call"  ></mu-text-field>
+              </mu-form-item>
+            </mu-form>
           </div>
-
 
           <div class="modal-footer">
             <mu-button color="#ffffff" @click="cancel">取消</mu-button>
@@ -38,6 +40,7 @@
     name: 'call-modal',
     data() {
       return {
+        name: null,
         call: null,
       };
     },

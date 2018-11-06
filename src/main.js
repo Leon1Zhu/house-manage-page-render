@@ -13,10 +13,10 @@ import './styles/iconFont-symbol';
 
 
 
-import { Button, Select, TextField, Icon, ExpansionPanel, Chip, Slider, Helpers, Progress} from 'muse-ui';
+import {Form, Button, Select, TextField, Icon, ExpansionPanel, Chip, Slider, Helpers, Progress} from 'muse-ui';
 import Toast from 'muse-ui-toast';
 
-
+Vue.use(Form);
 Vue.use(Button);
 Vue.use(Select);
 Vue.use(TextField);

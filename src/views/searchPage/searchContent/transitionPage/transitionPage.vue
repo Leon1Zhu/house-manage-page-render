@@ -135,6 +135,7 @@ export default {
         this.parIndex = searchItem.index;
         this.childIndex = searchItem.childIndex;
       }
+      console.log(this.parIndex)
       return this.searchInfo[this.searchItem][this.parIndex].content;
     },
   },

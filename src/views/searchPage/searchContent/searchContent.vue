@@ -89,19 +89,27 @@ export default {
     'transition-page': transtion,
   },
   created() {
-    this.refreshData();
+    const requestFlag =  this.initRouterSearchData();
+    requestFlag || this.refreshData();
+
   },
   mounted() {
   },
   methods: {
-    showSelect(field) {
-      if (this.searchItem === field ) {
-        this.show = !this.show;
-        this.searchItem = field;
-      } else {
-        this.show = true;
-        this.searchItem = field;
+    initRouterSearchData() {
+      const queryType = this.$route.query.building_type;
+      if (queryType) {
+        this.searchItem = 'building_type';
+        this.searchSelectObj.building_type = {
+          data: queryType,
+          index: 0,
+          childIndex: 0,
+        };
+        console.log(this.searchSelectObj)
+        this.refreshData();
+        return true;
       }
+      return false;
     },
     searchData(parindex, childIndex, data) {
       this.show = false;
@@ -112,6 +120,15 @@ export default {
       }
       // TODO 刷新数据
       this.refreshData();
+    },
+    showSelect(field) {
+      if (this.searchItem === field ) {
+        this.show = !this.show;
+        this.searchItem = field;
+      } else {
+        this.show = true;
+        this.searchItem = field;
+      }
     },
     deleteSearchCondition(item) {
       let tempValue = JSON.parse(JSON.stringify(this.searchSelectObj));

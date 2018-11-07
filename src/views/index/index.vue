@@ -15,13 +15,13 @@
               ref="indexScroll">
         <ul >
           <li class="like-content" >
-            <swiper-content></swiper-content>
+            <swiper-content ></swiper-content>
           </li>
           <li class="like-content" >
-            <nav-content></nav-content>
+            <nav-content @toSearchPage="toSearchPage($event)"></nav-content>
           </li>
           <li class="like-content" >
-            <highQualityHouse></highQualityHouse>
+            <highQualityHouse :data="goodHouseData"></highQualityHouse>
           </li>
           <li class="like-content" >
             <guess-like :data="gusessLikeData"></guess-like>
@@ -51,6 +51,7 @@ export default {
       pagesize: 10,
       total: 0,
       gusessLikeData: [],
+      goodHouseData: [],
       loadingData: true,
     };
   },
@@ -64,10 +65,16 @@ export default {
   },
   created() {
     this.initGuessLikeData();
+    this.initGoodHouseData();
   },
   mounted() {
   },
   methods: {
+    initGoodHouseData() {
+      indexApi.getGoodHouse(1, 10).then((response) => {
+        this.goodHouseData = response.data.content;
+      }).catch(() => {})
+    },
     initGuessLikeData() {
       indexApi.getLikeHouse(this.index, this.pagesize).then((response) => {
         const data = response.data;
@@ -98,6 +105,9 @@ export default {
       if (this.index === this.total) {
         this.loadingData = false;
       }
+    },
+    toSearchPage(item) {
+      this.$router.push({path: '/search', query: {building_type : item}});
     }
   },
 };

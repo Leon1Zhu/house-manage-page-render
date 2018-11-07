@@ -115,7 +115,6 @@ export default {
     },
     paintSearchResult (result, searchName) {
       this.searchResult = [];
-      console.log(result)
       if (result.length) {
         result.forEach((item) => {
           if (searchName.join(',').indexOf('公交车站') > -1) {
@@ -128,7 +127,6 @@ export default {
       } else {
         this.searchResult = result.Ar;
       }
-      console.log(this.searchResult)
     },
     selectMapItem(item) {
       this.mapSearchList.forEach((item) => {

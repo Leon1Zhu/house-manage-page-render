@@ -1,30 +1,26 @@
 <template>
   <transition name="modal">
-    <div class="modal-mask">
+    <div class="modal-mask" @click="cancel">
       <div class="modal-wrapper">
         <div class="modal-container">
-          <!--
-        <div class="modal-header">
-          <slot name="header">
-            请输入电话号码
-          </slot>
-        </div>
-        -->
-          <div class="modal-body">
-            <mu-form  class="mu-demo-form"  label-width="100">
+        <span class="modal-header">
+          {{hedaerInfo}}
+          <span class="header-tips">我们将为您的个人信息保密,请填写您的个人信息!</span>
+        </span>
+          <div class="modal-body" @click="canPro">
+            <mu-form :model="userInfo" class="mu-demo-form"  label-width="100">
               <mu-form-item  label="姓名">
-                <mu-text-field v-model="name"  ></mu-text-field>
+                <mu-text-field v-model="userInfo.name"  ></mu-text-field>
               </mu-form-item>
             </mu-form>
             <mu-form  class="mu-demo-form"  label-width="100">
               <mu-form-item  label="电话号码">
-                <mu-text-field v-model="call"  ></mu-text-field>
+                <mu-text-field v-model="userInfo.call"  ></mu-text-field>
               </mu-form-item>
             </mu-form>
           </div>
 
           <div class="modal-footer">
-            <mu-button color="#ffffff" @click="cancel">取消</mu-button>
             <mu-button color="#0284DC" @click="save">保存</mu-button>
           </div>
         </div>
@@ -38,10 +34,18 @@
 
   export default {
     name: 'call-modal',
+    props: {
+      hedaerInfo: {
+        type: String,
+        default: '优惠通知',
+      }
+    },
     data() {
       return {
-        name: null,
-        call: null,
+        userInfo: {
+          name: null,
+          call: null,
+        }
       };
     },
     components: {},
@@ -55,6 +59,9 @@
       },
       save() {
         this.$emit('close');
+      },
+      canPro(e) {
+        e.stopPropagation();
       }
     },
   };

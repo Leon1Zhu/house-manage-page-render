@@ -6,10 +6,11 @@
   <div id="search-list">
     <scroll class="wrapper"
             :pulldown="true"
-            :pullUpLoad="true"
+            :pullup="true"
             @pulldown="refreshData()"
-            @pullup="loadData()"
-            :loadingData="loadingData">
+            @pullup="loadDataMore()"
+            :loadingData="loadingData"
+            ref="searchContent">
       <ul class="search-house-list">
         <li class="search-house-content" v-for="item in searchInfo">
           <div class="left-content">
@@ -50,43 +51,52 @@
 <script>
 import './searchList.scss';
 import scroll  from '../../../components/scroll/scroll';
+import searchApi from '../../../api/searchPage';
 
 export default {
   name: 'search-list',
+  props: ['searchData'],
   data() {
     return {
       loadingData: true,
       index: 0,
       total: 0,
-      searchInfo: [
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-      ],
+      pageSize: 10,
+      searchInfo: [],
     };
   },
   components: {
     'scroll': scroll,
   },
   created() {},
-  mounted() {},
+  mounted() {
+  },
   methods: {
-    loadData() {},
+    loadDataMore() {
+      if (this.index >= this.total) {
+        return ;
+      }
+      this.index++;
+      this.loadData();
+    },
+    loadData() {
+      searchApi.getSelectedHouse(this.searchData, this.index, this.pageSize).then((response) => {
+        this.searchInfo = this.searchInfo.concat(response.data.result);
+        this.total = Math.ceil(response.data.total / this.pageSize) - 1;
+        this.judgeLast();
+        this.$nextTick(() => {
+          this.$refs.searchContent.refresh();
+        })
+      })
+    },
     refreshData() {
       this.index = 0;
       this.loadingData = true;
+      this.searchInfo = [];
+      this.loadData();
     },
     judgeLast() {
-      if (this.index === this.total) {
+      if (this.index >= this.total) {
         this.loadingData = false;
       }
     }

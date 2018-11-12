@@ -88,7 +88,7 @@ export default {
       }).catch(() => {});
     },
     loadData() {
-      if (this.index === this.total) {
+      if (this.index >= this.total) {
         return ;
       }
       this.loadingData = true;
@@ -97,12 +97,11 @@ export default {
     },
     refreshData() {
       this.index = 0;
-      this.loadMore= true;
       this.gusessLikeData = [];
       this.initGuessLikeData();
     },
     judgeLast() {
-      if (this.index === this.total) {
+      if (this.index >= this.total) {
         this.loadingData = false;
       }
     },

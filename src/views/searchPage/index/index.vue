@@ -5,8 +5,8 @@
 <template>
   <div id="search-list-index" :class="{'hasSearchItem' : hasSelect}" >
     <return-house></return-house>
-    <search-content ref="searchContent"></search-content>
-    <search-list></search-list>
+    <search-content ref="searchContent" @getSearchObject="getSearchObject"></search-content>
+    <search-list :searchData="searchListParam" ref="searchListContent"></search-list>
   </div>
 </template>
 
@@ -19,7 +19,9 @@ import returnHouse from '../../../components/retutrnHouse/returnHouse';
 export default {
   name: 'index',
   data() {
-    return {};
+    return {
+      searchListParam: {},
+    };
   },
   computed: {
     hasSelect() {
@@ -31,11 +33,19 @@ export default {
     searchList,
     returnHouse,
   },
-  created() {},
-  mounted() {
-    this.$nextTick(() => {
-    })
+  created() {
   },
-  methods: {},
+  mounted() {
+  },
+  methods: {
+    getSearchObject(searchSelectObj) {
+      this.searchListParam = searchSelectObj;
+      // 等待展示组件的渲染完成
+      this.$nextTick(() => {
+        this.$refs.searchListContent.refreshData(searchSelectObj);
+      })
+
+    },
+  },
 };
 </script>

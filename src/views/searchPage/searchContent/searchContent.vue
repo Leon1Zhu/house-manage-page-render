@@ -58,8 +58,6 @@ export default {
   name: 'search-content',
   data() {
     return {
-      index: 0,
-      length: 10,
       area: '南京',
       show: false,
       searchItem: 'regin',
@@ -89,11 +87,12 @@ export default {
     'transition-page': transtion,
   },
   created() {
-    const requestFlag =  this.initRouterSearchData();
-    requestFlag || this.refreshData();
-
   },
   mounted() {
+    this.$nextTick(() => {
+       this.initRouterSearchData();
+       this.refreshData();
+    })
   },
   methods: {
     initRouterSearchData() {
@@ -105,11 +104,7 @@ export default {
           index: parseInt(this.$route.query.parIndex),
           childIndex: parseInt(this.$route.query.index),
         };
-        console.log(this.searchSelectObj)
-        this.refreshData();
-        return true;
       }
-      return false;
     },
     searchData(parindex, childIndex, data) {
       this.show = false;
@@ -118,7 +113,6 @@ export default {
         childIndex: childIndex,
         data: data,
       }
-      // TODO 刷新数据
       this.refreshData();
     },
     showSelect(field) {
@@ -134,13 +128,10 @@ export default {
       let tempValue = JSON.parse(JSON.stringify(this.searchSelectObj));
       delete tempValue[item];
       this.searchSelectObj = tempValue;
-      // TODO 刷新数据
       this.refreshData();
     },
     refreshData() {
-      searchApi.getSelectedHouse(this.searchSelectObj, this.index, this.length).then((response) => {
-
-      })
+      this.$emit('getSearchObject', this.searchSelectObj);
     },
     inputFunc() {
       clearTimeout(timer);

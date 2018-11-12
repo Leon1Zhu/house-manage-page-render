@@ -12,6 +12,7 @@ $selectedColor:#ffa000;
   width: 100%;
   .mu-tsransition-box {
     display: flex;
+    min-height: 35vh;
   }
   .search-left, .search-right {
     flex: 1;

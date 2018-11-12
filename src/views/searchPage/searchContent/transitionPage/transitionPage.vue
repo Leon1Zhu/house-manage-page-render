@@ -44,6 +44,7 @@ export default {
       iswx: false,
       parIndex: 0,
       childIndex: null,
+      rightContent: [],
       searchInfo: {
         price: [
           {
@@ -134,23 +135,37 @@ export default {
     searchObj(){
         return this.searchInfo[this.searchItem];
     },
-    rightContent() {
-      this.childIndex = null;
-      const searchItem = this.searchSelectObj[this.searchItem];
-      if (searchItem) {
-        this.parIndex = searchItem.index;
-        this.childIndex = searchItem.childIndex;
-      }
-      console.log(this.parIndex)
-      return this.searchInfo[this.searchItem][this.parIndex].content;
-    },
+  },
+  watch: {
+    searchItem(newV) {
+     this.changeRightContent();
+    }
   },
   components: {},
   created() {},
   mounted() {},
   methods: {
+    changeRightContent(index) {
+      const searchItem = this.searchSelectObj[this.searchItem];
+      this.childIndex = null;
+      this.parIndex = 0;
+      if (searchItem) {
+        this.parIndex = searchItem.index;
+        this.childIndex = searchItem.childIndex;
+      }
+      this.rightContent = this.searchInfo[this.searchItem][this.parIndex].content;
+    },
     changeSearchInfo(index) {
+      const searchItem = this.searchSelectObj[this.searchItem];
       this.parIndex = index;
+      if (searchItem) {
+        if (searchItem.index === index) {
+          this.childIndex = searchItem.childIndex;
+        } else {
+          this.childIndex = null;
+        }
+      }
+      this.rightContent = this.searchInfo[this.searchItem][this.parIndex].content;
     },
     searchData(index, item){
       this.childIndex = index;

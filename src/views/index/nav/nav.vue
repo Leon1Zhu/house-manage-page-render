@@ -13,7 +13,7 @@
       </li>
     </ul>
     <ul class="second-nav">
-      <li class="nav-li" v-for="item in sedondNav">
+      <li class="nav-li" v-for="item in sedondNav"  @click="searchType(item)">
         <svg class="icon" aria-hidden="true">
           <use :xlink:href="'#'+item.icon"></use>
         </svg>

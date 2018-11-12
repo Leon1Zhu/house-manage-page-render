@@ -102,8 +102,8 @@ export default {
         this.searchItem = 'building_type';
         this.searchSelectObj.building_type = {
           data: queryType,
-          index: 0,
-          childIndex: 0,
+          index: parseInt(this.$route.query.parIndex),
+          childIndex: parseInt(this.$route.query.index),
         };
         console.log(this.searchSelectObj)
         this.refreshData();

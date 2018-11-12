@@ -10,6 +10,7 @@
               :pulldown="false"
               :pullUpLoad="false">
         <div class="housing-estate-page">
+          <return-house></return-house>
           <!-- 住宅图片展示 -->
           <div>
             <housing-estate-swiper></housing-estate-swiper>
@@ -84,7 +85,8 @@ import HousingEstateDetail from "./housingEstateDetail/housingEstateDetail";
 import housingEsateMap from './housingEsateMap/housingEsateMap';
 import guessLike from '../../components/guessLike/guessLike.vue';
 import indexApi from '../../api/indexPage';
-import Footer from "./footer/footer";
+import Footer from './footer/footer';
+import returnHouse from '../../components/retutrnHouse/returnHouse';
 
 export default {
   name: "HousingEstate",
@@ -110,6 +112,7 @@ export default {
     "call-modal": CallModal,
     housingEsateMap,
     guessLike,
+    returnHouse,
   },
   created() {
     this.initGuessLikeData();
@@ -127,3 +130,4 @@ export default {
   }
 };
 </script>
+

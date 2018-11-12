@@ -107,7 +107,7 @@ export default {
       }
     },
     toSearchPage(item) {
-      this.$router.push({path: '/search', query: {building_type : item}});
+      this.$router.push({path: '/search', query: {building_type : item.link, parIndex: item.parIndex, index: item.index}});
     }
   },
 };

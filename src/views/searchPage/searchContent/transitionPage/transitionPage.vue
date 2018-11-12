@@ -100,6 +100,12 @@ export default {
               '公寓',
               '综合体',
             ],
+          },
+          {
+            name: '品质住房',
+            content: [
+              '优质房源',
+            ],
           }
         ],
         house_type: [

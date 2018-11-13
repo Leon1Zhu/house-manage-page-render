@@ -8,15 +8,15 @@
     <swiper :options="swiperOptionValue" ref="qualitySwiper" >
       <!-- slides -->
       <swiper-slide v-for="item in data">
-        <img src="../../../assets/highQuality.png"/>
+        <img :src="$imgUrl+item.imgs[0].imgsUrl" @click="$router.push({path: '/housing-estate', query: {id: item.id}})"/>
         <span class="quality-name">
           {{item.houseName}}
         </span>
         <span class="quality-info">
-          {{item.regin}}|{{item.houseType}}|107m2|南
+          {{item.regin}}|{{ item.houseType.split(',')[0] }}| {{ item.area}}㎡
         </span>
         <span class="quality-price">
-          {{item.price}}万/㎡
+          {{item.price}}元/㎡
         </span>
       </swiper-slide>
 

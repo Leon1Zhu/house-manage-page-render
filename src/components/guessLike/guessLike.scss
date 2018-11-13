@@ -44,6 +44,23 @@
           font-size: 11px;
         }
       }
+      .nav-li {
+        display: inline-block;
+        height: (17);
+        border: vm(1) solid rgba(185, 222, 248, 0.2964);
+        border-radius: vm(1);
+        text-align: center;
+        padding: 0 vm(5) vm(1) vm(5);
+        .nav-name {
+          font-size: vm(12);
+          line-height: vm(17);
+          color: #0284DC;
+          opacity: 0.5521;
+        }
+      }
+      .nav-li:not(:first-child) {
+        margin-left: vm(5);
+      }
     }
   }
 }

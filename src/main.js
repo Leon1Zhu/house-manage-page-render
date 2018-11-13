@@ -39,3 +39,5 @@ new Vue({
     document.dispatchEvent(new Event('render-event'))
   }
 })
+
+Vue.prototype.$imgUrl = 'http://www.wlmfang.com:9080/dummypath'

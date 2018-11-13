@@ -47,7 +47,7 @@ export default {
   name: 'index',
   data() {
     return {
-      index: 1,
+      index: 0,
       pagesize: 10,
       total: 0,
       gusessLikeData: [],
@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     initGoodHouseData() {
-      indexApi.getGoodHouse(1, 10).then((response) => {
+      indexApi.getGoodHouse(0, 10).then((response) => {
         this.goodHouseData = response.data.content;
       }).catch(() => {})
     },

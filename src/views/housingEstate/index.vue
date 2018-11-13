@@ -94,7 +94,8 @@ export default {
     return {
       index: 1,
       pagesize: 5,
-      showModal: false
+      showModal: false,
+      id: null,
     };
   },
   components: {
@@ -115,6 +116,12 @@ export default {
     returnHouse,
   },
   created() {
+    const  id = this.$route.query.id;
+    if (id) {
+      this.id = id;
+    } else {
+      this.$router.push({path: '/index'});
+    }
     this.initGuessLikeData();
   },
   mounted() {},

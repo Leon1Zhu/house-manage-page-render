@@ -7,7 +7,7 @@
     <h1>猜你喜欢</h1>
       <ul class="content">
         <li class="like-content" v-for="item in data">
-          <img src="../../assets/guessLike.png"/>
+          <img :src="$imgUrl+item.imgs[0].imgsUrl" @click="$router.push({path: '/housing-estate', query: {id: item.id}})"/>
           <div class="text-content">
             <div class="name-price">
               <span class="name"> {{item.houseName}}</span>
@@ -15,7 +15,9 @@
               <span class="price">{{item.price}}万/㎡</span>
             </div>
             <span class="region">{{item.regin}}</span>
-            <span class="house-type">热门户型 {{item.houseType}}</span>
+            <ul class="house-type ">
+              <li class="nav-li" v-for="typeItem in item.houseType.split(',')"><span class="nav-name">{{typeItem}}</span></li>
+              </ul>
           </div>
         </li>
       </ul>

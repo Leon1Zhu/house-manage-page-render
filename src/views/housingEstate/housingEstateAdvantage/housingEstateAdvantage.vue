@@ -10,14 +10,13 @@
     </div>
     <div class="advantage-type">
         <ul class="firse-nav">
-            <li class="nav-li" v-for="item in advantageList" v-bind:key="item.id" v-on:click="advantageType(item)" v-bind:class="{'nav-name-active': advantageObj && advantageObj.id === item.id}">
-                <span class="nav-name ">{{item.type}}</span>
+            <li class="nav-li" v-for="item in advantages" :key="item.id" @click="advantageType(item)" :class="{'nav-name-active': advantageObj && advantageObj.id === item.id}">
+                <span class="nav-name ">{{item.title}}</span>
             </li>
         </ul>
     </div>
     <div class="advantage-content">
-        <p>{{advantageObj.title}}</p>
-        <p>{{advantageObj.typeDesc}}</p>
+        <p>{{advantageObj.content}}</p>
     </div>
 </div>
 </template>
@@ -56,9 +55,10 @@ export default {
   components: {
   },
   created() {
-      this.advantageObj = this.advantageList[0];
   },
-  mounted() {},
+  mounted() {
+    this.advantageObj = this.advantages[0];
+  },
   methods: {
       advantageType (item) {
           this.advantageObj = item;

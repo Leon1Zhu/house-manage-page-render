@@ -40,16 +40,16 @@
             <housing-estate-advantage :advantages="houseInfo.advantage"></housing-estate-advantage>
           </div>
           <!-- 楼盘动态 -->
-          <div class="default-margin">
-            <housing-estate-dynamic></housing-estate-dynamic>
-          </div>
+          <!--<div class="default-margin">-->
+            <!--<housing-estate-dynamic></housing-estate-dynamic>-->
+          <!--</div>-->
           <!-- 楼盘详情 -->
           <div class="default-margin">
             <housing-estate-detail></housing-estate-detail>
           </div>
           <!--周边配套-->
           <div class="default-margin">
-            <housing-esate-map></housing-esate-map>
+            <housing-esate-map :address="houseInfo.address"></housing-esate-map>
           </div>
           <!--猜你喜欢-->
           <div class="default-margin">
@@ -98,7 +98,9 @@ export default {
       showModal: false,
       id: null,
       dalogText: null,
-      houseInfo: {},
+      houseInfo: {
+        advantage: [{}],
+      },
     };
   },
   components: {

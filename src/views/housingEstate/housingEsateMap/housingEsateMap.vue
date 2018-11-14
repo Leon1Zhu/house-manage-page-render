@@ -49,6 +49,7 @@
 import './housingEsateMap.scss';
 export default {
   name: 'housing-esate-map',
+  props: ['address'],
   data() {
     return {
       map: null,
@@ -87,13 +88,21 @@ export default {
   components: {},
   created() {},
   mounted() {
-    this.initMap();
+    let timer;
+    this.$nextTick(() => {
+      timer = setInterval(() => {
+        if (this.address) {
+          this.initMap();
+          clearInterval(timer)
+        }
+      }, 1000)
+    });
   },
   methods: {
     initMap () {
       var myGeo = new BMap.Geocoder();
       // 将地址解析结果显示在地图上，并调整地图视野
-      myGeo.getPoint('南京市雨花台区软件大道180号', (point) => {
+      myGeo.getPoint(this.address, (point) => {
         if (point) {
           this.map = new BMap.Map("allmap");
           this.mapPoint = new BMap.Point(point.lng, point.lat);

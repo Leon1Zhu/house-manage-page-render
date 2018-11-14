@@ -8,10 +8,10 @@
   <div class="housing-estate-nav">
     <ul class="nav-ul">
       <li class="nav-onsale-li">
-        <span class="nav-name">在售</span>
+        <span class="nav-name">{{houseInfo.salesStatus}}</span>
       </li>
       <li class="nav-residence-li">
-        <span class="nav-name">住宅</span>
+        <span class="nav-name">{{houseInfo.buildingType}}</span>
       </li>
     </ul>
   </div>
@@ -22,6 +22,7 @@ import './nav.scss';
 
 export default {
   name: 'housing-estate-nav',
+  props: ['houseInfo'],
   data() {
     return {};
   },

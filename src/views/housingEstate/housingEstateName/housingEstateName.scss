@@ -17,19 +17,22 @@
         color: #858585;
         font-size: vm(16);
         line-height: vm(23);
-        
+
     }
     .house-price {
         display: flex;
         margin-top: 10px;
         span {
-            font-size: vm(16);
-            line-height: vm(23);
-            font-weight: 500;
-            color: #858585;
+          font-size: vm(16);
+          line-height: vm(23);
+          font-weight: 500;
+          color: #858585;
         }
         strong {
-            color: #ff0000;
+          font-weight: bold;
+          color: #ff0000;
+          align-self: right;
+          margin-right: 3%;
         }
     }
     .house-open-sale {

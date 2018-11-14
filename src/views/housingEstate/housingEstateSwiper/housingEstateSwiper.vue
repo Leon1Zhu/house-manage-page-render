@@ -13,14 +13,11 @@
     <!--</div>-->
     <swiper class="swiper-slides" :options="swiperOptionValue" ref="mySwiper" >
         <!-- slides -->
-        <swiper-slide class="housingImg"><img src="../../../assets/guessLike.png"/></swiper-slide>
-        <swiper-slide class="housingImg"><img src="../../../assets/guessLike.png"/></swiper-slide>
-        <swiper-slide class="housingImg"><img src="../../../assets/guessLike.png"/></swiper-slide>
-        <swiper-slide class="housingImg"><img src="../../../assets/guessLike.png"/></swiper-slide>
+        <swiper-slide class="housingImg" v-for="item in imgs"><img :src="$imgUrl + item.imgsUrl"/></swiper-slide>
     </swiper>
     <div class="total-pages">
       <div>
-        <span>共4张</span>
+        <span>共{{imgs.length}}张</span>
       </div>
     </div>
   </div>
@@ -32,6 +29,14 @@ import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
   name: "housing-estate-swiper",
+  props: {
+    imgs: {
+      type: Array,
+      default: () => {
+        return [];
+      }
+    }
+  },
   data() {
     return {
       swiperOptionValue: {
@@ -39,9 +44,6 @@ export default {
         pagination: {
           el: ".swiper-pagination",
           type: "bullets"
-          //type: 'fraction',
-          //type : 'progressbar',
-          //type : 'custom',
         },
         loop: true
       }

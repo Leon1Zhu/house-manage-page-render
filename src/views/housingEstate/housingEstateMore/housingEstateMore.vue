@@ -14,7 +14,7 @@
           <div class="activity_desc">
             <span>一键咨询更多打折优惠</span>
           </div>
-          <div class="lijlingqu">立即领取</div>
+          <div class="lijlingqu" @click="showSubscribe('优惠领取')">立即领取</div>
         </div>
         <div class="activity_right">
           <div class="semi-circle"></div>
@@ -24,13 +24,13 @@
       <span>更多楼盘信息</span>
     </div>
     <div class="remind">
-      <div class="price_change" @click="emitToParent">
+      <div class="price_change" @click="showSubscribe('变价提醒')">
         <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-bianjia"></use>
             </svg>
         <span>变价提醒我</span>
       </div>
-      <div class="open_change" @click="emitToParent">
+      <div class="open_change" @click="showSubscribe('开盘提醒')">
         <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-kaipan"></use>
             </svg>
@@ -40,7 +40,7 @@
     <call-modal v-if="showModal" @close="showModal = false">
     </call-modal>
   </div>
-  
+
 </template>
 
 <script>
@@ -62,10 +62,9 @@ export default {
   created() {},
   mounted() {},
   methods: {
-    emitToParent() {
-      console.log('ffffffffffffffffffffffffffffffffff');
-      this.$emit('child-event', true);
-    }
+    showSubscribe(type) {
+      this.$emit('showDalog', type);
+    },
   }
 };
 </script>

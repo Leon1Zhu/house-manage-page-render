@@ -13,27 +13,27 @@
           <return-house></return-house>
           <!-- 住宅图片展示 -->
           <div>
-            <housing-estate-swiper></housing-estate-swiper>
+            <housing-estate-swiper :imgs="houseInfo.imgs"></housing-estate-swiper>
           </div>
           <!-- 选择按钮 -->
           <div class="default-margin button-nav">
-            <housing-estate-nav></housing-estate-nav>
+            <housing-estate-nav  :houseInfo="houseInfo"></housing-estate-nav>
           </div>
           <!-- 楼盘信息 -->
           <div class="default-margin housing-estate-info">
-            <housing-estate-name></housing-estate-name>
+            <housing-estate-name :houseInfo="houseInfo"></housing-estate-name>
           </div>
           <!-- 更多楼盘 -->
           <div class="default-margin housing-estate-mores">
-            <housing-estate-more @child-event="parentEvent"></housing-estate-more>
+            <housing-estate-more @showDalog="showDalog"></housing-estate-more>
           </div>
           <!-- 免费专业接送看房 -->
           <div class="default-margin free-view-house">
-            <car-appointment></car-appointment>
+            <car-appointment :houseOrderNumber="houseInfo.houseOrderNumber" @showDalog="showDalog"></car-appointment>
           </div>
           <!-- 户型介绍 -->
           <div class="default-margin house-type">
-            <house-type></house-type>
+            <house-type :types="houseInfo.type"></house-type>
           </div>
           <!-- 楼盘优势 -->
           <div class="default-margin">
@@ -63,7 +63,7 @@
     </div>
     <div>
     <!-- 弹出框 -->
-    <call-modal v-if="showModal" @close="showModal = false">
+    <call-modal :hedaerInfo="dalogText" v-if="showModal" @close="showModal = false">
     </call-modal>
     </div>
   </section>
@@ -87,6 +87,7 @@ import guessLike from '../../components/guessLike/guessLike.vue';
 import indexApi from '../../api/indexPage';
 import Footer from './footer/footer';
 import returnHouse from '../../components/retutrnHouse/returnHouse';
+import getHouseApi from '../../api/detailPage';
 
 export default {
   name: "HousingEstate",
@@ -96,6 +97,8 @@ export default {
       pagesize: 5,
       showModal: false,
       id: null,
+      dalogText: null,
+      houseInfo: {},
     };
   },
   components: {
@@ -119,6 +122,7 @@ export default {
     const  id = this.$route.query.id;
     if (id) {
       this.id = id;
+      this.initData();
     } else {
       this.$router.push({path: '/index'});
     }
@@ -126,13 +130,20 @@ export default {
   },
   mounted() {},
   methods: {
+    initData() {
+      console.log(this.id)
+      getHouseApi.getHouseById(this.id).then((response) => {
+        this.houseInfo = response.data;
+      })
+    },
     initGuessLikeData() {
       indexApi.getLikeHouse(this.index, this.pagesize).then((response) => {
 
       }).catch(() => {});
     },
-    parentEvent: function(data) {
-      this.showModal = data;
+    showDalog: function(type) {
+      this.showModal = true;
+      this.dalogText = type;
     }
   }
 };

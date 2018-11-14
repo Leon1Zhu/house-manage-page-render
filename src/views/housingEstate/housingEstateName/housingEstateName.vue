@@ -5,44 +5,41 @@
 -->
 <template>
   <div class="housing-estate-name">
-    <span>{{housingEstateName.name}}</span>
+    <span>{{houseInfo.houseName}}</span>
     <h4 class="house-price">
       <span>住宅：</span>
-      <strong>{{housingEstateName.price}}</strong> 
-      <span class="price-date">&nbsp;&nbsp;{{housingEstateName.priceDate}}</span> 
+      <strong>{{houseInfo.price}}元/㎡</strong>
+      <span class="price-date" style="display: block;float: right;">&nbsp;&nbsp;{{updateTime}}天前更新</span>
     </h4>
     <h4 class="house-open-sale">
       <span>开盘：</span>
-      <span class="sale-time">{{housingEstateName.saleDate}}</span>
+      <span class="sale-time">{{moment(houseInfo.openTime).format('YYYY年MM月DD日')}}</span>
     </h4>
     <h4 class="house-address">
       <span>地址：</span>
-      <span class="address-detail">{{housingEstateName.address}}</span>
-      <span>
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-arrow-right-copy-copy-copy"></use>
-        </svg>
-      </span>
+      <span class="address-detail">{{houseInfo.address}}</span>
     </h4>
   </div>
 </template>
 <script>
 import "./housingEstateName.scss";
+const moment = require('moment');
 
 export default {
   name: "housing-estate-name",
+  props: ['houseInfo'],
   data() {
     return {
-      housingEstateName: {
-        name: '金地格林line',
-        price: '1200元/平',
-        priceDate: '5天前更新',
-        saleDate: '2018年09月20日',
-        address: 'xxxxxxxxxxxxxxxxxxxxx',
-      }
+      moment: moment,
     };
   },
   computed: {
+    updateTime() {
+      const du = moment.duration(moment() - moment(this.houseInfo.createTime), 'ms');
+      console.log(du.get('day'));
+      return du.get('day');
+
+    }
   },
   components: {
 

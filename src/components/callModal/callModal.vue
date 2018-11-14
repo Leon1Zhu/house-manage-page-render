@@ -38,7 +38,7 @@
       hedaerInfo: {
         type: String,
         default: '优惠通知',
-      }
+      },
     },
     data() {
       return {

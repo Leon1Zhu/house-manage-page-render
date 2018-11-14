@@ -8,13 +8,13 @@
     <div class="house-type-title">
         <span class="name">户型介绍</span>
         <span class="temp-span"></span>
-        <span class="view-all">
-          全部户型 <svg class="icon" aria-hidden="true">
-        <use xlink:href="#icon-arrow-right-copy-copy-copy"></use>
-      </svg></span>
+        <!--<span class="view-all">-->
+          <!--全部户型 <svg class="icon" aria-hidden="true">-->
+        <!--<use xlink:href="#icon-arrow-right-copy-copy-copy"></use>-->
+      <!--</svg></span>-->
     </div>
     <div>
-      
+
       <swiper :options="swiperOptionValue" ref="qualitySwiper" >
       <!-- slides -->
       <swiper-slide>
@@ -121,7 +121,7 @@
           </div>
         </div>
       </swiper-slide>
-  
+
 
 
     </swiper>
@@ -135,12 +135,20 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper';
 
 export default {
   name: "house-type",
+  props: {
+    types: {
+      types: Array,
+      default: () => {
+        return [];
+      },
+    }
+  },
   data() {
     return {
       swiperOptionValue: {
         spaceBetween: 15,
       },
-      
+
     };
   },
   computed: {

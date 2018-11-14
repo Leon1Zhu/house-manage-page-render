@@ -27,6 +27,7 @@ import "./housingEstateAdvantage.scss";
 
 export default {
   name: "house-advantage",
+  props: ['advantages'],
   data() {
     return {
         advantageObj: {},

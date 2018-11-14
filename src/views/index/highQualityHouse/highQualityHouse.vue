@@ -16,7 +16,7 @@
           {{item.regin}}|{{ item.houseType.split(',')[0] }}| {{ item.area}}㎡
         </span>
         <span class="quality-price">
-          {{item.price}}元/㎡
+          {{item.price}}
         </span>
       </swiper-slide>
 

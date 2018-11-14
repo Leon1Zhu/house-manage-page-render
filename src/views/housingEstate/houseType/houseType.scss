@@ -33,7 +33,7 @@
   .swiper-container {
     width: 100%;
     margin-top: vm(16);
-    
+
     .swiper-wrapper {
       width: vm(244);
       height: vm(245);
@@ -46,14 +46,14 @@
           border: vm(1) solid rgba(151, 151, 151, 0.2964);
           .content-top {
             width: 100%;
-            height: vm(133);
             border-radius: vm(1) vm(1) 0 0;
             background-color: #FAE7C9;
+            border-bottom: vm(1) solid rgba(151, 151, 151, 0.1);
           }
           .content-bottom {
             padding-left: vm(12);
             border-radius: vm(1);
-           
+
             .room-type {
               font-size: vm(16);
               line-height: vm(21);

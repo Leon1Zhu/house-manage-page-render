@@ -37,7 +37,7 @@
           </div>
           <!-- 楼盘优势 -->
           <div class="default-margin">
-            <housing-estate-advantage></housing-estate-advantage>
+            <housing-estate-advantage :advantages="houseInfo.advantage"></housing-estate-advantage>
           </div>
           <!-- 楼盘动态 -->
           <div class="default-margin">

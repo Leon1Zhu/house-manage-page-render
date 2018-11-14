@@ -12,7 +12,7 @@
             <div class="name-price">
               <span class="name"> {{item.houseName}}</span>
               <span class="temp-span"></span>
-              <span class="price">{{item.price}}万/㎡</span>
+              <span class="price">{{item.price}}</span>
             </div>
             <span class="region">{{item.regin}}</span>
             <ul class="house-type ">

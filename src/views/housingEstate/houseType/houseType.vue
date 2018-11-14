@@ -17,26 +17,23 @@
 
       <swiper :options="swiperOptionValue" ref="qualitySwiper" >
       <!-- slides -->
-      <swiper-slide>
+      <swiper-slide v-for="item in types">
         <div class="house-type-content">
-          <div class="content-top"></div>
+          <img class="content-top" :src="$imgUrl + item.typeImg">
           <div class="content-bottom">
             <div class="room-type">
-              <span>2室2厅2卫</span>
+              <span>{{item.typeName}}</span>
             </div>
             <div class="room-area">
-              <span>建面103m2  朝向东西</span>
+              <span>{{item.typeMeasure}}㎡</span>
             </div>
             <div class="room-price">
-              <span>约154万/套</span>
+              <span>{{item.typePrice}}</span>
             </div>
             <div class="room-style">
               <ul class="firse-nav">
-                <li class="nav-li">
-                    <span class="nav-name">全明格局</span>
-                </li>
-                <li class="nav-li">
-                    <span class="nav-name">主卧带卫</span>
+                <li class="nav-li" v-for="label in item.typeLabel.split(',')">
+                    <span class="nav-name">{{label}}</span>
                 </li>
               </ul>
             </div>

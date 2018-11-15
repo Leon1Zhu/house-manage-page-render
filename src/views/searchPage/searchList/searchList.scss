@@ -16,6 +16,11 @@
       display: flex;
       .left-content {
         width: 40%;
+        display: flex;
+        flex-flow: column;
+        .img-content {
+          flex: 1;
+        }
         img {
           width: 100%;
         }
@@ -54,11 +59,20 @@
         }
         .tel-content {
           margin-top: vm(8);
+          a {
+            display: inline-block;
+            width: 40%;
+            text-align: center;
+            font-size: 14px;
+            height: vm(26);
+            padding: vm(5) vm(8);
+          }
         }
         .mu-button {
           width: 48%;
           padding: vm(5) 0;
           font-size: 14px;
+          height: vm(26);
           font-family: PingFangSC;
           border: none;
         }
@@ -82,5 +96,8 @@
   }
   .wrapper {
     height: calc(100vh - 51vmin);
+  }
+  .mu-raised-button {
+
   }
 }

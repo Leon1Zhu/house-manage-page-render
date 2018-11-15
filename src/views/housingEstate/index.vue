@@ -33,7 +33,7 @@
           </div>
           <!-- 户型介绍 -->
           <div class="default-margin house-type">
-            <house-type :types="houseInfo.type"></house-type>
+            <house-type :types="houseInfo.type" v-if="houseInfo.type.length > 0"></house-type>
           </div>
           <!-- 楼盘优势 -->
           <div class="default-margin">

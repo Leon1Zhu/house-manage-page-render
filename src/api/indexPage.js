@@ -6,6 +6,18 @@ const getLikeHouseApi = '/api/getLikeHouse';
 // 获取猜你
 const getGoodHouseApi = '/api/getGoodHouse';
 
+// 点击拨打电话保存记录
+const addCallListApi = 'api/addNewPersonTel';
+
+const addCallList = function (telOrigin, telNumber, telTime) {
+  const params = {
+    telOrigin,
+    telNumber,
+    telTime
+  };
+  return api.post(addCallListApi, null, params);
+};
+
 const getLikeHouse = function (page, size) {
   const params = {
     page,

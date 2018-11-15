@@ -15,9 +15,9 @@
         <li class="search-house-content" v-for="item in searchInfo">
           <div class="left-content">
             <div class="img-content" @click="$router.push('/housing-estate')">
-              <img src="../../../assets/guessLike.png" >
+              <img :src="$imgUrl + item.cover_photo" >
             </div>
-            <div class="car-realy">
+            <div class="car-realy" v-if="item.is_specialcar" @click="specialCar()">
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-chezi"></use>
               </svg>
@@ -25,26 +25,30 @@
             </div>
           </div>
           <div class="right-content">
-            <h1>金地格林line</h1>
-            <div class="house-ts">1号线底站，总价低</div>
+            <h1>{{item.house_name}}</h1>
+            <div class="house-ts">{{item.characteristic}}</div>
             <div class="other-infos">
-              <span class="house-type">住宅</span>
-              <span class="house-aresa">江宁</span>
-              <span class="house-aresa">江宁其他</span>
-              <span class="house-other">绿化高</span>
+              <span class="house-type">{{item.building_type}}</span>
+              <span class="house-aresa">{{item.regin}}</span>
+              <span class="house-aresa">{{item.housetype.split(',')[0] || ''}}</span>
+              <span class="house-other">{{item.housetype.split(',')[1] || '' }}</span>
             </div>
             <div class="tel-content">
-              <mu-button color="#0284DC" @click="$router.push('/housing-estate')">免费通话</mu-button>
-              <mu-button color="#48BDA9" @click="$router.push('/housing-estate')">咨询热线</mu-button>
+              <a style="background: #0284DC;color: white;" @click="freeCall()">免费通话</a>
+              <a href="tel:18752002039" style="background: #48BDA9;color: white;" @click="addPersonCall()">咨询热线</a>
             </div>
             <div class="price-area">
-              <span class="price">12000元/㎡</span>
-              <span class="area">建面 110-128㎡</span>
+              <span class="price">{{item.price}}</span>
+              <span class="area">{{item.area}}</span>
             </div>
           </div>
         </li>
       </ul>
     </scroll>
+
+    <!-- 弹出框 -->
+    <call-modal :hedaerInfo="dalogText" :childContent="childContent" v-if="showModal" @close="showModal = false">
+    </call-modal>
   </div>
 </template>
 
@@ -52,21 +56,26 @@
 import './searchList.scss';
 import scroll  from '../../../components/scroll/scroll';
 import searchApi from '../../../api/searchPage';
+import CallModal from "../../../components/callModal/callModal";
 
 export default {
   name: 'search-list',
   props: ['searchData'],
   data() {
     return {
+      showModal: false,
       loadingData: true,
       index: 0,
       total: 0,
       pageSize: 10,
       searchInfo: [],
+      dalogText: '',
+      childContent: '',
     };
   },
   components: {
     'scroll': scroll,
+    "call-modal": CallModal,
   },
   created() {},
   mounted() {
@@ -99,6 +108,18 @@ export default {
       if (this.index >= this.total) {
         this.loadingData = false;
       }
+    },
+    freeCall() {
+      this.showModal = true;
+      this.dalogText = '免费通话';
+      this.childContent = '请填写您的联系信息，我们将在第一时间给您回电';
+    },
+    specialCar() {
+      this.showModal = true;
+      this.dalogText = '专车看房';
+      this.childContent = '我们将为您的个人信息保密,请填写您的个人信息!';
+    },
+    addPersonCall(tel) {
     }
   },
 };

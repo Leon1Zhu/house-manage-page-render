@@ -8,7 +8,7 @@
     <swiper :options="swiperOptionValue" ref="qualitySwiper" >
       <!-- slides -->
       <swiper-slide v-for="item in data">
-        <img :src="$imgUrl+item.imgs[0].imgsUrl" @click="$router.push({path: '/housing-estate', query: {id: item.id}})"/>
+        <img :src="$imgUrl + item.coverPhoto" @click="$router.push({path: '/housing-estate', query: {id: item.id}})"/>
         <span class="quality-name">
           {{item.houseName}}
         </span>

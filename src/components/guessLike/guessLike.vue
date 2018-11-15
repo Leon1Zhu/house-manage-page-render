@@ -7,7 +7,7 @@
     <h1>猜你喜欢</h1>
       <ul class="content">
         <li class="like-content" v-for="item in data">
-          <img :src="$imgUrl+item.imgs[0].imgsUrl" @click="$router.push({path: '/housing-estate', query: {id: item.id}})"/>
+          <img :src="$imgUrl+item.coverPhoto" @click="$router.push({path: '/housing-estate', query: {id: item.id}})"/>
           <div class="text-content">
             <div class="name-price">
               <span class="name"> {{item.houseName}}</span>

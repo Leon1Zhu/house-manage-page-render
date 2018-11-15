@@ -5,7 +5,7 @@
         <div class="modal-container">
         <span class="modal-header">
           {{hedaerInfo}}
-          <span class="header-tips">我们将为您的个人信息保密,请填写您的个人信息!</span>
+          <span class="header-tips">{{childContent}}</span>
         </span>
           <div class="modal-body" @click="canPro">
             <mu-form :model="userInfo" class="mu-demo-form"  label-width="100">
@@ -37,6 +37,10 @@
         type: String,
         default: '优惠通知',
       },
+      childContent: {
+        types: String,
+        default: '我们将为您的个人信息保密,请填写您的个人信息!',
+      }
     },
     data() {
       return {

@@ -25,7 +25,7 @@
               <span>{{item.typeName}}</span>
             </div>
             <div class="room-area">
-              <span>{{item.typeMeasure}}㎡</span>
+              <span>{{item.typeMeasure}}</span>
             </div>
             <div class="room-price">
               <span>{{item.typePrice}}</span>

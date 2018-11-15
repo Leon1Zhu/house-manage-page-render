@@ -37,7 +37,7 @@
           </div>
           <!-- 楼盘优势 -->
           <div class="default-margin">
-            <housing-estate-advantage :advantages="houseInfo.advantage"></housing-estate-advantage>
+            <housing-estate-advantage :advantages="houseInfo.advantage" ref="houseAdvantage"></housing-estate-advantage>
           </div>
           <!-- 楼盘动态 -->
           <!--<div class="default-margin">-->
@@ -45,7 +45,7 @@
           <!--</div>-->
           <!-- 楼盘详情 -->
           <div class="default-margin">
-            <housing-estate-detail></housing-estate-detail>
+            <housing-estate-detail :houseInfo="houseInfo" ref="houseDetail"></housing-estate-detail>
           </div>
           <!--周边配套-->
           <div class="default-margin">
@@ -53,7 +53,7 @@
           </div>
           <!--猜你喜欢-->
           <div class="default-margin">
-            <guess-like></guess-like>
+            <guess-like :data="gusessLikeData"></guess-like>
           </div>
         </div>
       </scroll>
@@ -101,6 +101,7 @@ export default {
       houseInfo: {
         advantage: [{}],
       },
+      gusessLikeData: [],
     };
   },
   components: {
@@ -133,14 +134,17 @@ export default {
   mounted() {},
   methods: {
     initData() {
-      console.log(this.id)
       getHouseApi.getHouseById(this.id).then((response) => {
         this.houseInfo = response.data;
+        this.$nextTick(() => {
+          this.$refs.houseDetail.initData();
+          this.$refs.houseAdvantage.initData();
+        })
       })
     },
     initGuessLikeData() {
       indexApi.getLikeHouse(this.index, this.pagesize).then((response) => {
-
+        this.gusessLikeData = response.data.content;
       }).catch(() => {});
     },
     showDalog: function(type) {

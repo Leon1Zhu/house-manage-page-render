@@ -51,18 +51,22 @@ export default {
     }
   },
   computed: {
+    advantage() {
+      return this.advantages;
+    }
   },
   components: {
   },
   created() {
   },
-  mounted() {
-    this.advantageObj = this.advantages[0];
-  },
+  mounted() {},
   methods: {
-      advantageType (item) {
-          this.advantageObj = item;
-      }
+    initData() {
+      this.advantageObj = this.advantages[0];
+    },
+    advantageType (item) {
+      this.advantageObj = item;
+    },
   }
 };
 </script>

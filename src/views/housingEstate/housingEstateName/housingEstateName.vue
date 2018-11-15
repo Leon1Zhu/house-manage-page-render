@@ -8,7 +8,7 @@
     <span>{{houseInfo.houseName}}</span>
     <h4 class="house-price">
       <span>住宅：</span>
-      <strong>{{houseInfo.price}}元/㎡</strong>
+      <strong>{{houseInfo.price}}</strong>
       <span class="price-date" style="display: block;float: right;">&nbsp;&nbsp;{{updateTime}}天前更新</span>
     </h4>
     <h4 class="house-open-sale">
@@ -36,7 +36,6 @@ export default {
   computed: {
     updateTime() {
       const du = moment.duration(moment() - moment(this.houseInfo.createTime), 'ms');
-      console.log(du.get('day'));
       return du.get('day');
 
     }

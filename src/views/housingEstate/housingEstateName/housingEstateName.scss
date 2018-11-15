@@ -42,6 +42,10 @@
             font-size: 14px;
             font-weight: 500;
         }
+        .sale-time {
+          font-weight: 400;
+          color: RGBA(51, 51, 51, 1);
+        }
 
     }
     .house-address {
@@ -56,6 +60,8 @@
         .address-detail {
             flex: 1;
             word-wrap: break-word;
+            font-weight: 400;
+            color: RGBA(51, 51, 51, 1);
         }
     }
 }

@@ -12,8 +12,6 @@
               <mu-form-item  label="姓名">
                 <mu-text-field v-model="userInfo.name"  ></mu-text-field>
               </mu-form-item>
-            </mu-form>
-            <mu-form  class="mu-demo-form"  label-width="100">
               <mu-form-item  label="电话号码">
                 <mu-text-field v-model="userInfo.call"  ></mu-text-field>
               </mu-form-item>

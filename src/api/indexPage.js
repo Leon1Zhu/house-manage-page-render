@@ -7,15 +7,15 @@ const getLikeHouseApi = '/api/getLikeHouse';
 const getGoodHouseApi = '/api/getGoodHouse';
 
 // 点击拨打电话保存记录
-const addCallListApi = 'api/addNewPersonTel';
+const addCallListApi = '/api/addNewPersonTel';
 
-const addCallList = function (telOrigin, telNumber, telTime) {
+const addCallList = function (telOrigin, telNumber, houseId) {
   const params = {
     telOrigin,
     telNumber,
-    telTime
+    houseId
   };
-  return api.post(addCallListApi, null, params);
+  return api.post(addCallListApi, params, {params});
 };
 
 const getLikeHouse = function (page, size) {
@@ -37,4 +37,5 @@ const getGoodHouse = function (page, size) {
 export default {
   getLikeHouse,
   getGoodHouse,
+  addCallList,
 };

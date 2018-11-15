@@ -11,7 +11,8 @@
             @pullup="loadDataMore()"
             :loadingData="loadingData"
             ref="searchContent">
-      <ul class="search-house-list">
+      <no-data-com v-if="searchInfo.length < 1"></no-data-com>
+      <ul class="search-house-list" v-else>
         <li class="search-house-content" v-for="item in searchInfo">
           <div class="left-content">
             <div class="img-content" @click="$router.push('/housing-estate')">
@@ -35,7 +36,7 @@
             </div>
             <div class="tel-content">
               <a style="background: #0284DC;color: white;" @click="freeCall()">免费通话</a>
-              <a href="tel:18752002039" style="background: #48BDA9;color: white;" @click="addPersonCall()">咨询热线</a>
+              <a href="tel:18752002039" style="background: #48BDA9;color: white;" @click="addPersonCall(item.house_tel, item.id)">咨询热线</a>
             </div>
             <div class="price-area">
               <span class="price">{{item.price}}</span>
@@ -57,6 +58,8 @@ import './searchList.scss';
 import scroll  from '../../../components/scroll/scroll';
 import searchApi from '../../../api/searchPage';
 import CallModal from "../../../components/callModal/callModal";
+import noDataCom from '../../../components/noDataCom/noDataCom';
+import indexApi from '../../../api/indexPage';
 
 export default {
   name: 'search-list',
@@ -76,6 +79,7 @@ export default {
   components: {
     'scroll': scroll,
     "call-modal": CallModal,
+    noDataCom,
   },
   created() {},
   mounted() {
@@ -119,7 +123,10 @@ export default {
       this.dalogText = '专车看房';
       this.childContent = '我们将为您的个人信息保密,请填写您的个人信息!';
     },
-    addPersonCall(tel) {
+    addPersonCall(tel, id) {
+      indexApi.addCallList('PC', tel, id).then(() => {
+
+      })
     }
   },
 };

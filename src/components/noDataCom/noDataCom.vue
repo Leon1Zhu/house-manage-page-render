@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import './noDataCom.less';
+import './noDataCom.scss';
 
 export default {
   name: 'no-data-com',

@@ -15,7 +15,7 @@
         <div class="search-input">
           <div class="mu-input ">
             <div class="mu-text-field mu-input-content">
-            <input v-model="searchSelectObj.houseName" tabindex="0" class="mu-text-field-input" placeholder="楼盘名称搜索" @input ="inputFunc">
+            <input v-model="searchSelectObj.houseName" tabindex="0" class="mu-text-field-input" placeholder="楼盘名称搜索" @input="inputFunc">
             </div>
           </div>
         </div>
@@ -136,6 +136,7 @@ export default {
     inputFunc() {
       clearTimeout(timer);
       timer = setTimeout(() => {
+        this.searchData();
       },800)
     },
   },

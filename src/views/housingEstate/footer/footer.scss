@@ -13,7 +13,6 @@
     .text-desc {
       flex: 1;
       color: #9E9E9E;
-      font-family: MicrosoftYaHei;
       margin-top: vm(18);
       margin-left: vm(10);
     }
@@ -21,12 +20,16 @@
       margin-top: vm(18);
       color: #48BDA9;
     }
-    .mu-button {
-        width: vm(237);
-        height: vm(32);
-        font-family: MicrosoftYaHei;
-        font-size: vm(13);
-        line-height: vm(18);
-        margin-top: vm(9);
+    a {
+      display: inline-block;
+      width: vm(237);
+      height: vm(32);
+      font-size: 16px;
+      line-height: vm(32);
+      margin-top: vm(9);
+      background: rgb(2, 132, 220);
+      color: white;
+      text-align: center;
+      border-radius: 3px;
     }
 }

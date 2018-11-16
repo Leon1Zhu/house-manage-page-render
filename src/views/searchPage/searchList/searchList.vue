@@ -15,7 +15,7 @@
       <ul class="search-house-list" v-else>
         <li class="search-house-content" v-for="item in searchInfo">
           <div class="left-content">
-            <div class="img-content" @click="$router.push('/housing-estate')">
+            <div class="img-content" @click="$router.push({path: '/housing-estate', query: {id: item.id}})">
               <img :src="$imgUrl + item.cover_photo" >
             </div>
             <div class="car-realy" v-if="item.is_specialcar" @click="specialCar()">
@@ -74,6 +74,8 @@ export default {
       searchInfo: [],
       dalogText: '',
       childContent: '',
+      // 是否已经拨打过电话
+      hasTel: false,
     };
   },
   components: {
@@ -121,13 +123,15 @@ export default {
     specialCar() {
       this.showModal = true;
       this.dalogText = '专车看房';
-      this.childContent = '我们将为您的个人信息保密,请填写您的个人信息!';
+      this.childContent = this.$callModelDetaultValue;
     },
     addPersonCall(tel, id) {
-      indexApi.addCallList('PC', tel, id).then(() => {
-
-      })
-    }
+      if (!this.hasTel) {
+        indexApi.addCallList('PC', tel, id).then(() => {
+          this.hasTel = true;
+        })
+      }
+    },
   },
 };
 </script>

@@ -40,4 +40,5 @@ new Vue({
   }
 })
 
-Vue.prototype.$imgUrl = 'http://www.wlmfang.com:9080/dummypath'
+Vue.prototype.$imgUrl = 'http://www.wlmfang.com:9080/dummypath';
+Vue.prototype.$callModelDetaultValue = '我们将为您的个人信息保密,请填写您的个人信息!';

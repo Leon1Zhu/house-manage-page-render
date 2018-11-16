@@ -88,7 +88,8 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
+        NODE_ENV: '"production"',
+        host:'"http://www.wlmfang.com:8888"',
       }
     }),
     new HtmlWebpackPlugin({

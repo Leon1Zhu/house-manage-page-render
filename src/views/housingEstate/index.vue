@@ -59,11 +59,11 @@
       </scroll>
     </div>
     <div class="house-footer">
-      <housing-estate-footer></housing-estate-footer>
+      <housing-estate-footer @showDalog="showDalog" :houseInfo="houseInfo"></housing-estate-footer>
     </div>
     <div>
     <!-- 弹出框 -->
-    <call-modal :hedaerInfo="dalogText" v-if="showModal" @close="showModal = false">
+    <call-modal :hedaerInfo="dalogText" v-if="showModal" @close="showModal = false" :childContent="childContent">
     </call-modal>
     </div>
   </section>
@@ -93,15 +93,17 @@ export default {
   name: "HousingEstate",
   data() {
     return {
-      index: 1,
+      index: 0,
       pagesize: 5,
       showModal: false,
       id: null,
       dalogText: null,
       houseInfo: {
         advantage: [{}],
+        type: [],
       },
-      gusessLikeData: [],
+      gusessLikeData: null,
+      childContent: this.$callModelDetaultValue,
     };
   },
   components: {
@@ -129,13 +131,13 @@ export default {
     } else {
       this.$router.push({path: '/index'});
     }
-    this.initGuessLikeData();
   },
   mounted() {},
   methods: {
     initData() {
       getHouseApi.getHouseById(this.id).then((response) => {
         this.houseInfo = response.data;
+        this.initGuessLikeData();
         this.$nextTick(() => {
           this.$refs.houseDetail.initData();
           this.$refs.houseAdvantage.initData();
@@ -144,10 +146,16 @@ export default {
     },
     initGuessLikeData() {
       indexApi.getLikeHouse(this.index, this.pagesize).then((response) => {
-        this.gusessLikeData = response.data.content;
+        this.gusessLikeData = this.gusessLikeData || [];
+        this.gusessLikeData = response.data.content.filter((item) => {
+          if (item.houseName !== this.houseInfo.houseName) {
+            return item;
+          }
+        });
       }).catch(() => {});
     },
-    showDalog: function(type) {
+    showDalog: function(type, content) {
+      this.childContent = content ? content : this.$callModelDetaultValue;
       this.showModal = true;
       this.dalogText = type;
     }

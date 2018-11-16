@@ -39,7 +39,7 @@
       },
       childContent: {
         types: String,
-        default: '我们将为您的个人信息保密,请填写您的个人信息!',
+        default: this.$callModelDetaultValue,
       }
     },
     data() {

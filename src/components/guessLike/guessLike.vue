@@ -7,7 +7,7 @@
     <h1>猜你喜欢</h1>
       <ul class="content">
         <li class="like-content" v-for="item in data">
-          <img :src="$imgUrl+item.coverPhoto" @click="$router.push({path: '/housing-estate', query: {id: item.id}})"/>
+          <img :src="$imgUrl+item.coverPhoto" @click="goRouter(item)"/>
           <div class="text-content">
             <div class="name-price">
               <span class="name"> {{item.houseName}}</span>
@@ -47,6 +47,12 @@ export default {
   mounted() {
   },
   methods: {
+    goRouter(item) {
+      this.$router.push({path: '/housing-estate', query: {id: item.id}})
+      if (this.$route.path.indexOf('housing-estate') > 0) {
+        this.$router.go(0);
+      }
+    }
   },
 };
 </script>

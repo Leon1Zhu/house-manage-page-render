@@ -39,7 +39,7 @@
     </div>
     <transition-page :show="show" :searchItem="searchItem" :searchSelectObj="searchSelectObj" @searchData="searchData"></transition-page>
     <ul class="seach-isselect-condition" >
-      <li v-for="(item, index) in searchSelectObj">
+      <li v-for="(item, index) in searchSelectObj" v-if="index !== 'houseName'">
         <mu-chip class="demo-chip" @delete="deleteSearchCondition(index)" delete>
           {{item.data}}
         </mu-chip>
@@ -125,6 +125,7 @@ export default {
       }
     },
     deleteSearchCondition(item) {
+      console.log( this.searchSelectObj)
       let tempValue = JSON.parse(JSON.stringify(this.searchSelectObj));
       delete tempValue[item];
       this.searchSelectObj = tempValue;
@@ -136,7 +137,7 @@ export default {
     inputFunc() {
       clearTimeout(timer);
       timer = setTimeout(() => {
-        this.searchData();
+        this.refreshData();
       },800)
     },
   },

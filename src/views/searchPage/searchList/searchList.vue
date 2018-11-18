@@ -26,6 +26,11 @@
             </div>
           </div>
           <div class="right-content">
+            <ul class="nav-ul">
+              <li class="nav-onsale-li">
+                <span class="nav-name">{{item.sales_status}}</span>
+              </li>
+            </ul>
             <h1>{{item.house_name}}</h1>
             <div class="house-ts">{{item.characteristic}}</div>
             <div class="other-infos">

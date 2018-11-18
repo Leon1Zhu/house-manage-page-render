@@ -72,16 +72,12 @@ export default {
               const demoList = [
                 {
                     id: 5,
-                    type: 'xxxx',
-                    typeValue: 'xxx'
+                    type: '房屋面积',
+                    typeValue: this.houseInfo.area,
                 }, {
                     id: 6,
-                    type: 'xxxx',
-                    typeValue: 'xxx'
-                }, {
-                    id: 7,
-                    type: 'xxxx',
-                    typeValue: 'xxx'
+                    type: '销售状况',
+                    typeValue:  this.houseInfo.salesStatus,
                 }
               ];
               this.detailList = this.detailList.concat(demoList);

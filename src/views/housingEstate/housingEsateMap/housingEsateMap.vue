@@ -69,7 +69,7 @@ export default {
         },
         {
           name: '教育',
-          searchInfo: ['学校','幼儿园', '小学', '高中', '大学'],
+          searchInfo: ['幼儿园', '小学', '初中', '高中', '大学'],
           active: false,
         },
         {
@@ -114,12 +114,12 @@ export default {
    },
     searchInfoInMap(item) {
       this.map.clearOverlays();
-      const circle = new BMap.Circle(this.mapPoint,1000,{fillColor:"blue", strokeWeight: 1 ,fillOpacity: 0.3, strokeOpacity: 0.3});
+      const circle = new BMap.Circle(this.mapPoint,1500,{fillColor:"blue", strokeWeight: 1 ,fillOpacity: 0.3, strokeOpacity: 0.3});
       this.map.addOverlay(circle);
       const local =  new BMap.LocalSearch(this.map, {renderOptions: {map: this.map, selectFirstResult: false,},pageCapacity: 100 ,onSearchComplete: (result) => {
         this.paintSearchResult(result, item);
       }});
-      local.searchNearby(item, this.mapPoint, 1000);
+      local.searchNearby(item, this.mapPoint, 1500);
 
     },
     paintSearchResult (result, searchName) {

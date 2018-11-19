@@ -6,10 +6,8 @@
   <div class="swiper-option">
     <swiper :options="swiperOptionValue" ref="mySwiper" >
       <!-- slides -->
-      <swiper-slide><img src="../../../assets/timg.png"/></swiper-slide>
-      <swiper-slide><img src="../../../assets/timg.png"/></swiper-slide>
-      <swiper-slide><img src="../../../assets/timg.png"/></swiper-slide>
-      <swiper-slide><img src="../../../assets/timg.png"/></swiper-slide>
+      <swiper-slide ><img @click="$router.push({path: '/housing-estate', query: {id: 1}})" src="../../../assets/2.jpg"/></swiper-slide>
+      <swiper-slide ><img @click="$router.push({path: '/housing-estate', query: {id: 2}})" src="../../../assets/1.jpg"/></swiper-slide>
       <div class="swiper-pagination"  slot="pagination"></div>
     </swiper>
   </div>

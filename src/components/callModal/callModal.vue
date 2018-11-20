@@ -60,6 +60,14 @@
         this.$emit('close');
       },
       save() {
+        if(!this.userInfo.name){
+          this.$toast.error('');
+          return ;
+        }
+        if(!(/^1\d{10}$/.test(this.userInfo.call))){
+          this.$toast.error('手机号码有误，请重新填写');
+          return ;
+        }
         this.$emit('close');
       },
       canPro(e) {

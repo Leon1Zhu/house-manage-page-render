@@ -45,6 +45,9 @@ import indexApi from '../../api/indexPage';
 
 export default {
   name: 'index',
+  metaInfo: {
+    title: '南京最新房产信息_南京楼盘_南京在售楼盘_南京买房_南京新盘_南京楼盘价格走势_华云庭房产', // set a title
+  },
   data() {
     return {
       index: 0,

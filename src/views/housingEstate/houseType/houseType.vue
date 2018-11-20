@@ -62,6 +62,7 @@ export default {
   data() {
     return {
       swiperOptionValue: {
+        slidesPerView: 1.39,
         spaceBetween: 15,
       },
 

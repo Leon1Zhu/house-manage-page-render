@@ -2,12 +2,12 @@
   <transition name="modal">
     <div class="modal-mask" @click="cancel">
       <div class="modal-wrapper">
-        <div class="modal-container">
+        <div class="modal-container" @click="canPro">
         <span class="modal-header">
           {{hedaerInfo}}
           <span class="header-tips">{{childContent}}</span>
         </span>
-          <div class="modal-body" @click="canPro">
+          <div class="modal-body" >
             <mu-form :model="userInfo" class="mu-demo-form"  label-width="100">
               <mu-form-item  label="姓名">
                 <mu-text-field v-model="userInfo.name"  ></mu-text-field>
@@ -29,6 +29,7 @@
 
 <script>
   import './callModal.scss';
+  import detailApi from '../../api/detailPage';
 
   export default {
     name: 'call-modal',
@@ -40,7 +41,13 @@
       childContent: {
         types: String,
         default: this.$callModelDetaultValue,
-      }
+      },
+      houseInfo: {
+        type: Object,
+        default: () => {
+          return {};
+        },
+      },
     },
     data() {
       return {
@@ -61,14 +68,17 @@
       },
       save() {
         if(!this.userInfo.name){
-          this.$toast.error('');
+          this.$toast.warning('姓名不能为空哦！');
           return ;
         }
-        if(!(/^1\d{10}$/.test(this.userInfo.call))){
-          this.$toast.error('手机号码有误，请重新填写');
+        if(!(/^1[3456789]\d{9}$/.test(this.userInfo.call))){
+          this.$toast.warning('请填写您正确的联系方式');
           return ;
         }
-        this.$emit('close');
+        detailApi.addSubscribe(this.userInfo.call, this.userInfo.name, this.houseInfo.id, this.hedaerInfo, 'MOBILE').then((response) => {
+          this.$emit('close');
+        }).catch(() => {})
+
       },
       canPro(e) {
         e.stopPropagation();

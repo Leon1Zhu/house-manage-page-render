@@ -63,7 +63,7 @@
     </div>
     <div>
     <!-- 弹出框 -->
-    <call-modal :hedaerInfo="dalogText" v-if="showModal" @close="showModal = false" :childContent="childContent">
+    <call-modal :houseInfo="houseInfo" :hedaerInfo="dalogText" v-if="showModal" @close="showModal = false" :childContent="childContent">
     </call-modal>
     </div>
   </section>

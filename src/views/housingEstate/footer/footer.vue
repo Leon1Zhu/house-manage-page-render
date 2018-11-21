@@ -43,7 +43,7 @@ export default {
     },
     addPersonCall(tel, id) {
       if (!this.hasTel) {
-        indexApi.addCallList('PC', this.houseInfo.houseTel, this.houseInfo.id).then(() => {
+        indexApi.addCallList('MOBILE', this.houseInfo.houseTel, this.houseInfo.id).then(() => {
           this.hasTel = true;
         })
       }

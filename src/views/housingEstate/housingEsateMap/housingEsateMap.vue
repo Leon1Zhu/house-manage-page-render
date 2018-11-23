@@ -125,6 +125,7 @@ export default {
     paintSearchResult (result, searchName) {
       this.searchResult = [];
       if (result.length) {
+        console.log(result)
         result.forEach((item) => {
           if (searchName.join(',').indexOf('公交车站') > -1) {
             item.Ar.forEach((arItem) => {

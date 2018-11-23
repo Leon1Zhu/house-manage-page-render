@@ -75,7 +75,7 @@
           this.$toast.warning('请填写您正确的联系方式');
           return ;
         }
-        detailApi.addSubscribe(this.userInfo.call, this.userInfo.name, this.houseInfo.id, this.hedaerInfo, 'MOBILE').then((response) => {
+        detailApi.addSubscribe(this.$encryption(this.userInfo.call), this.userInfo.name, this.houseInfo.id, this.hedaerInfo, 'MOBILE').then((response) => {
           this.$emit('close');
         }).catch(() => {})
 

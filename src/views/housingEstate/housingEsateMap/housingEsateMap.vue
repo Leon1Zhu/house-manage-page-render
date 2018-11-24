@@ -116,7 +116,7 @@ export default {
       this.map.clearOverlays();
       const circle = new BMap.Circle(this.mapPoint,1500,{fillColor:"blue", strokeWeight: 1 ,fillOpacity: 0.3, strokeOpacity: 0.3});
       this.map.addOverlay(circle);
-      const local =  new BMap.LocalSearch(this.map, {renderOptions: {map: this.map, selectFirstResult: false,},pageCapacity: 100 ,onSearchComplete: (result) => {
+      const local =  new BMap.LocalSearch(this.map, {renderOptions: {map: this.map, selectFirstResult: false,},pageCapacity: 7 ,onSearchComplete: (result) => {
         this.paintSearchResult(result, item);
       }});
       local.searchNearby(item, this.mapPoint, 1500);
@@ -125,7 +125,6 @@ export default {
     paintSearchResult (result, searchName) {
       this.searchResult = [];
       if (result.length) {
-        console.log(result)
         result.forEach((item) => {
           if (searchName.join(',').indexOf('公交车站') > -1) {
             item.Ar.forEach((arItem) => {

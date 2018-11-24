@@ -9,7 +9,6 @@
     <h4 class="house-price">
       <span>住宅：</span>
       <strong>{{houseInfo.price}}</strong>
-      <span class="price-date" style="display: block;float: right;">&nbsp;&nbsp;{{updateTime}}天前更新</span>
     </h4>
     <h4 class="house-open-sale">
       <span>开盘：</span>

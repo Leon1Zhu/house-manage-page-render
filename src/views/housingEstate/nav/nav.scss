@@ -3,7 +3,6 @@
 .housing-estate-nav {
     .nav-ul {
         li {
-            width: vm(40);
             height: vm(17);
             line-height: vm(17);
             border-radius: 1px;
@@ -13,9 +12,7 @@
             span {
                 width: vm(30);
                 height: vm(12);
-                margin-left: vm(8);
-                margin-top: vm(2);
-                margin-bottom: vm(4);
+                margin: vm(2) vm(8) vm(4);
             }
         }
         .nav-onsale-li {

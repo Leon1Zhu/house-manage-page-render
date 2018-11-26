@@ -4,7 +4,7 @@
 -->
 <template>
   <div ref="wrapper" class="scroll-content">
-    <div class="content">
+    <div class="content" :class="{'showTop' : dropDown && pulldown}">
       <div class="drop-down" v-if="dropDown && pulldown">松手刷新数据...</div>
       <slot></slot>
       <!-- -->

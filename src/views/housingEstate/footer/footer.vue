@@ -13,7 +13,7 @@
         预约看房
       </span>
       <span class="text-button">
-        <a :href="`tel:${houseInfo && houseInfo.houseTel}`">
+        <a :href="`tel:${houseInfo && houseInfo.houseTel}`" @click="addPersonCall()">
           <span class="">
             <svg class="icon" aria-hidden="true">
                   <use xlink:href="#icon-phone"></use>
@@ -46,9 +46,9 @@ export default {
   mounted() {},
   methods: {
     freeCall() {
-      this.$emit('showDalog', '免费通话', '请填写您的联系信息，我们将在第一时间给您回电')
+      this.$emit('showDalog', '预约看房', '请填写您的联系信息，我们将在第一时间给您回电')
     },
-    addPersonCall(tel, id) {
+    addPersonCall() {
       if (!this.hasTel) {
         indexApi.addCallList('MOBILE', this.houseInfo.houseTel, this.houseInfo.id).then(() => {
           this.hasTel = true;

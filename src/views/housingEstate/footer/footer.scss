@@ -14,11 +14,15 @@
       flex: 1;
       color: #9E9E9E;
       margin-top: vm(18);
-      margin-left: vm(10);
+      margin-left: vm(5);
     }
     .text-icon {
-      margin-top: vm(18);
+      margin-top: vm(15);
       color: #48BDA9;
+      .icon {
+        width: 23px;
+        height: 23px;
+      }
     }
     a {
       display: inline-block;

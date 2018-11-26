@@ -4,16 +4,23 @@
 -->
 <template>
   <footer class="housing-estate-footer">
-      <span class="text-icon">
-        <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-kaipan"></use>
-            </svg>
-      </span>
+     <span class="text-icon">
+            <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-yuyueguanli"></use>
+                </svg>
+          </span>
       <span class="text-desc" @click="freeCall()">
-        免费通话
+        预约看房
       </span>
       <span class="text-button">
-        <a :href="`tel:${houseInfo && houseInfo.houseTel}`">预约看房</a>
+        <a :href="`tel:${houseInfo && houseInfo.houseTel}`">
+          <span class="">
+            <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-phone"></use>
+                </svg>
+          </span>
+          免费通话
+        </a>
       </span>
       <!--
 

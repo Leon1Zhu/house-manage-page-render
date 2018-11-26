@@ -35,7 +35,7 @@
         display: flex;
         width: vm(150);
         font-family: PingFangSC;
-        font-size: 14px;
+        font-size: 12px;
         align-items: center;
       }
       .area:after {
@@ -49,6 +49,10 @@
       }
       .search-icon {
         width: vm(60);
+      }
+
+      .mu-text-field-input {
+        font-size: 14px;
       }
     }
   }

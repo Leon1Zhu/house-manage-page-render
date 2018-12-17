@@ -13,7 +13,7 @@ import './styles/iconFont-symbol';
 
 
 
-import {Form, Button, Select, TextField, Icon, ExpansionPanel, Chip, Slider, Helpers, Progress} from 'muse-ui';
+import {Form, Button, Select, TextField, Icon, ExpansionPanel, Chip, Slider, Helpers, Progress, Dialog} from 'muse-ui';
 import Toast from 'muse-ui-toast';
 
 Vue.use(Form);
@@ -27,6 +27,7 @@ Vue.use(Chip);
 Vue.use(Slider);
 Vue.use(Progress);
 Vue.use(Toast);
+Vue.use(Dialog);
 Vue.use(Helpers);
 
 

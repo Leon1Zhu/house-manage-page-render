@@ -33,6 +33,32 @@
 }
 
 .red-packet-content {
+  .mu-dialog.mu-scale {
+    background: url("../../assets/redpacket.png");
+    background-size: cover;
+    padding: vm(15) 0;
+  }
+  .mu-dialog-title {
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+    font-size: 14px;
+    line-height: 21px;
+    height: 21px;
+    color: #fff;
+    display: block;
+  }
+  .money-info, .call-info {
+    color: white;
+    text-align: center;
+  }
+  .money-info {
+    margin: vm(10) 0 vm(20);
+  }
+  .call-info {
+    font-size: 13px;
+    color: #ffc5cd;
+    margin: vm(40) 0 vm(20);
+  }
   .iphoneipnut {
     width: 100%;
     border: #dedede 1px solid;
@@ -41,6 +67,7 @@
     text-indent: 8px;
     border-radius: 5px;
     box-shadow: 0px 3px 6px #ccc inset;
+    font-size: 13px;
     outline: none!important;
   }
 }

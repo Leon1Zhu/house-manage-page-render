@@ -67,11 +67,11 @@
     </call-modal>
     </div>
     <mu-dialog class="red-packet-content" title="华云庭房产" width="600" max-width="80%" :esc-press-close="false" :overlay-close="false" :open.sync="openAlert">
-      <div class="money-info">给您发了<span>2000</span>元购房红包</div>
+      <div class="money-info">给您发了<span>2000元购房</span>红包</div>
       <div class="call-info">优惠信息请致电售楼部咨询</div>
       <input name="phone" class="iphoneipnut"  placeholder="请输入手机号码" type="number">
-      <mu-button slot="actions" flat color="primary" @click="closeAlertDialog">立即领取</mu-button>
       <mu-button slot="actions" flat color="primary" @click="closeAlertDialog">我再看看</mu-button>
+      <mu-button slot="actions" flat color="primary" @click="closeAlertDialog">立即领取</mu-button>
     </mu-dialog>
   </section>
 </template>

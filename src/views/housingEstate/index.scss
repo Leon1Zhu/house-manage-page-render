@@ -37,6 +37,7 @@
     background: url("../../assets/redpacket.png");
     background-size: cover;
     padding: vm(15) 0;
+    border-radius: 5px;
   }
   .mu-dialog-title {
     text-align: center;
@@ -53,6 +54,11 @@
   }
   .money-info {
     margin: vm(10) 0 vm(20);
+    .redpacket-content {
+      color: #ffe001;
+      font-size: 16px;
+      font-weight: normal;
+    }
   }
   .call-info {
     font-size: 13px;
@@ -69,6 +75,21 @@
     box-shadow: 0px 3px 6px #ccc inset;
     font-size: 13px;
     outline: none!important;
+  }
+  .mu-dialog-actions {
+    padding: 8px 24px;
+    button {
+      width:48%;
+      color: #8c3911;
+      &:first-child {
+        background: #fdba86;
+        margin-right: 2%;
+      }
+      &:last-child {
+        background: #ffdf00;
+        margin-left: 2%;
+      }
+    }
   }
 }
 

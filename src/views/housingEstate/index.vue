@@ -67,11 +67,11 @@
     </call-modal>
     </div>
     <mu-dialog class="red-packet-content" title="华云庭房产" width="80%" max-width="80%" :esc-press-close="false" :overlay-close="false" :open.sync="openAlert">
-      <div class="money-info">给您发了<span class="redpacket-content">2000元</span>购房红包</div>
-      <div class="call-info">优惠信息请致电售楼部咨询</div>
-      <input name="phone" class="iphoneipnut"  placeholder="请输入手机号码" type="number">
+      <div class="money-info">给您发了<span class="redpacket-content">{{houseInfo.redpacket}}</span>购房红包</div>
+      <div class="call-info">{{houseInfo.redpacketDesc}}</div>
+      <input v-model="redpacket_phone" name="phone" class="iphoneipnut"  placeholder="请输入手机号码" type="number">
       <mu-button slot="actions" flat color="primary" @click="closeAlertDialog">我再看看</mu-button>
-      <mu-button slot="actions" flat color="primary" @click="closeAlertDialog">立即领取</mu-button>
+      <mu-button slot="actions" flat color="primary" @click="getRedpacket">立即领取</mu-button>
     </mu-dialog>
   </section>
 </template>
@@ -100,6 +100,7 @@ export default {
   name: "HousingEstate",
   data() {
     return {
+      redpacket_phone: null,
       openAlert: false,
       index: 0,
       pagesize: 5,
@@ -148,8 +149,15 @@ export default {
     })
   },
   methods: {
-    openAlertDialog () {
-      this.openAlert = true;
+    getRedpacket () {
+      this.openAlert = false;
+      if(!(/^1[3456789]\d{9}$/.test(this.redpacket_phone))){
+        this.$toast.warning('请填写您正确的联系方式');
+        return ;
+      }
+      getHouseApi.addSubscribe(this.$encryption(this.redpacket_phone), '', this.houseInfo.id, this.houseInfo.redpacket+'红包领取', 'MOBILE').then((response) => {
+        this.$emit('close');
+      }).catch(() => {})
     },
     closeAlertDialog () {
       this.openAlert = false;

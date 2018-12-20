@@ -63,10 +63,10 @@
     </div>
     <div>
     <!-- 弹出框 -->
-    <call-modal :houseInfo="houseInfo" :hedaerInfo="dalogText" v-if="showModal" @close="showModal = false" :childContent="childContent">
+    <call-modal :houseInfo="houseInfo" :hedaerInfo="dalogText" v-if="showModal" @close="$toast.success('预约成功，我们会在第一时间和您联系');showModal = false" :childContent="childContent">
     </call-modal>
     </div>
-    <mu-dialog class="red-packet-content" title="华云庭房产" width="80%" max-width="80%" :esc-press-close="false" :overlay-close="false" :open.sync="openAlert">
+    <mu-dialog class="red-packet-content" :title="houseInfo.houseName" width="80%" max-width="80%" :esc-press-close="false" :overlay-close="false" :open.sync="openAlert">
       <div class="money-info">给您发了<span class="redpacket-content">{{houseInfo.redpacket}}</span>购房红包</div>
       <div class="call-info">{{houseInfo.redpacketDesc}}</div>
       <input v-model="redpacket_phone" name="phone" class="iphoneipnut"  placeholder="请输入手机号码" type="number">
@@ -143,9 +143,11 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      setTimeout(() => {
-        this.openAlert = true;
-      }, 3000)
+      if (!localStorage.getItem('REDPACKET')) {
+        setTimeout(() => {
+          this.openAlert = true;
+        }, 3000)
+      }
     })
   },
   methods: {
@@ -156,7 +158,8 @@ export default {
         return ;
       }
       getHouseApi.addSubscribe(this.$encryption(this.redpacket_phone), '', this.houseInfo.id, this.houseInfo.redpacket+'红包领取', 'MOBILE').then((response) => {
-        this.$emit('close');
+        localStorage.setItem('REDPACKET', true);
+        this.$toast.success('领取成功，我们会在第一时间和您联系');
       }).catch(() => {})
     },
     closeAlertDialog () {

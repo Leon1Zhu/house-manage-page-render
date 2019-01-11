@@ -146,7 +146,7 @@ export default {
       if (!localStorage.getItem('REDPACKET')) {
         setTimeout(() => {
           this.openAlert = true;
-        }, 3000)
+        }, 6000)
       }
     })
   },

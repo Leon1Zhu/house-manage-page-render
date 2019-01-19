@@ -10,7 +10,7 @@
               :pulldown="false"
               :pullUpLoad="false">
         <div class="housing-estate-page">
-          <return-house></return-house>
+          <!--<return-house></return-house>-->
           <!-- 住宅图片展示 -->
           <div>
             <housing-estate-swiper :imgs="houseInfo.imgs"></housing-estate-swiper>

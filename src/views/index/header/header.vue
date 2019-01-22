@@ -11,7 +11,7 @@
       <span>南京</span>
     </div>
 
-    <h1>华云庭</h1>
+    <h1>云锋新房</h1>
     <svg class="icon" aria-hidden="true" @click="push('/search')">
       <use xlink:href="#icon-chaxun"></use>
     </svg>

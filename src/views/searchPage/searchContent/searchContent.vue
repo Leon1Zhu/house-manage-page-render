@@ -125,7 +125,6 @@ export default {
       }
     },
     deleteSearchCondition(item) {
-      console.log( this.searchSelectObj)
       let tempValue = JSON.parse(JSON.stringify(this.searchSelectObj));
       delete tempValue[item];
       this.searchSelectObj = tempValue;

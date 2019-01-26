@@ -71,8 +71,6 @@ export default {
     this.initGoodHouseData();
   },
   mounted() {
-      console.log(this.gusessLikeData)
-    console.log(JSON.parse(JSON.stringify(this.gusessLikeData)))
   },
   methods: {
     initGoodHouseData() {

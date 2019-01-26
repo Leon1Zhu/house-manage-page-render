@@ -41,7 +41,7 @@ new Vue({
   }
 })
 const key = [ 2, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ];
-Vue.prototype.$imgUrl = 'http://www.wlmfang.com:9081/dummypath';
+Vue.prototype.$imgUrl = 'http://njyfdc.com:9081/dummypath';
 Vue.prototype.$callModelDetaultValue = '我们将为您的个人信息保密,请填写您的个人信息!';
 Vue.prototype.$encryption = (value) => {
   //  将文本转换为字节

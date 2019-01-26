@@ -89,7 +89,7 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"',
-        host:'"http://www.wlmfang.com:8888"',
+        host:'"http://localhost:8888"',
       }
     }),
     new HtmlWebpackPlugin({

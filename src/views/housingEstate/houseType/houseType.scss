@@ -46,6 +46,7 @@
           border: vm(1) solid rgba(151, 151, 151, 0.2964);
           .content-top {
             width: 100%;
+            max-height: 136px;
             border-radius: vm(1) vm(1) 0 0;
             background-color: #FAE7C9;
             border-bottom: vm(1) solid rgba(151, 151, 151, 0.1);

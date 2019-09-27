@@ -1,6 +1,6 @@
 <template>
   <transition name="modal">
-    <div class="modal-mask" @click="cancel">
+    <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container" @click="canPro">
         <span class="modal-header">

@@ -13,13 +13,22 @@
     <!--</div>-->
     <swiper class="swiper-slides" :options="swiperOptionValue" ref="mySwiper" >
         <!-- slides -->
-        <swiper-slide class="housingImg" v-for="item in imgs"><img :src="$imgUrl + item.imgsUrl"/></swiper-slide>
+        <swiper-slide  class="housingImg" v-for="item in imgs"><img :src="$imgUrl + item.imgsUrl" @click="openFullscreenDialog(item.imgsUrl)"/></swiper-slide>
     </swiper>
     <div class="total-pages">
       <div>
         <span>共{{imgs.length}}张</span>
       </div>
     </div>
+
+    <mu-dialog class="img-full-dialog" width="100%" transition="slide-bottom" :open.sync="openFullscreen">
+      <mu-button slot="right" flat  @click="closeFullscreenDialog">
+        Done
+      </mu-button>
+      <div >
+        <img :src="$imgUrl + fullscreenImgUrl" />
+      </div>
+    </mu-dialog>
   </div>
 </template>
 
@@ -35,7 +44,8 @@ export default {
       default: () => {
         return [];
       }
-    }
+    },
+    openFullscreen: false,
   },
   data() {
     return {
@@ -46,7 +56,8 @@ export default {
           type: "bullets"
         },
         loop: true
-      }
+      },
+      fullscreenImgUrl: '',
     };
   },
   computed: {
@@ -63,6 +74,14 @@ export default {
   methods: {
     push(route) {
       this.$router.push({ path: route });
+    },
+    openFullscreenDialog (url) {
+      this.openFullscreen = true;
+      this.fullscreenImgUrl = url;
+      console.log(url)
+    },
+    closeFullscreenDialog () {
+      this.openFullscreen = false;
     }
   }
 };

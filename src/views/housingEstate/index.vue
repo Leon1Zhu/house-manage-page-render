@@ -25,7 +25,7 @@
           </div>
           <!-- 更多楼盘 -->
           <div class="default-margin housing-estate-mores">
-            <housing-estate-more @showDalog="showDalog"></housing-estate-more>
+            <housing-estate-more @showRedPackage="showRedPackage" @showDalog="showDalog"></housing-estate-more>
           </div>
           <!-- 免费专业接送看房 -->
           <div class="default-margin free-view-house">
@@ -34,6 +34,10 @@
           <!-- 户型介绍 -->
           <div class="default-margin house-type">
             <house-type :types="houseInfo.type" v-if="houseInfo.type.length > 0"></house-type>
+          </div>
+          <!--销售顾问-->
+          <div class="default-margin house-type">
+            <consultant :houseTel="houseInfo.houseTel"></consultant>
           </div>
           <!-- 楼盘优势 -->
           <div class="default-margin">
@@ -47,12 +51,16 @@
           <div class="default-margin">
             <housing-estate-detail :houseInfo="houseInfo" ref="houseDetail"></housing-estate-detail>
           </div>
+          <!--红包领取-->
+          <div class="default-margin">
+            <ActivityRedPackage @showDalog="showRedPackage"></ActivityRedPackage>
+          </div>
           <!--周边配套-->
           <div class="default-margin">
             <housing-esate-map :address="houseInfo.address"></housing-esate-map>
           </div>
           <!--猜你喜欢-->
-          <div class="default-margin">
+          <div class="default-margin" v-if="$route.query.id !== '78453dd6-72d9-4848-9575-417acfbbb74e'">
             <guess-like :data="gusessLikeData"></guess-like>
           </div>
         </div>
@@ -95,6 +103,8 @@ import indexApi from '../../api/indexPage';
 import Footer from './footer/footer';
 import returnHouse from '../../components/retutrnHouse/returnHouse';
 import getHouseApi from '../../api/detailPage';
+import consultant from './consultant/consultant';
+import ActivityRedPackage from './housingEstateMore/ActivityRedPackage';
 
 export default {
   name: "HousingEstate",
@@ -128,9 +138,11 @@ export default {
     "housing-estate-detail": HousingEstateDetail,
     "housing-estate-footer": Footer,
     "call-modal": CallModal,
+    "ActivityRedPackage": ActivityRedPackage,
     housingEsateMap,
     guessLike,
     returnHouse,
+    consultant
   },
   created() {
     const  id = this.$route.query.id;
@@ -151,6 +163,9 @@ export default {
     })
   },
   methods: {
+    showRedPackage() {
+      this.openAlert = true;
+    },
     getRedpacket () {
       this.openAlert = false;
       if(!(/^1[3456789]\d{9}$/.test(this.redpacket_phone))){

@@ -50,3 +50,15 @@
       }
     }
 }
+
+.img-full-dialog {
+  .mu-dialog {
+    max-width: 100%;
+    .mu-dialog-body {
+      padding: 6px;
+      img{
+        width: 100%;
+      }
+    }
+  }
+}

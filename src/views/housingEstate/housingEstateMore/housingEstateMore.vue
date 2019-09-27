@@ -5,21 +5,7 @@
 -->
 <template>
   <div class="housing-estate-more">
-    <div class="housing-estate-activity">
-        <div class="activity_left">
-          <div class="semi-circle"></div>
-        </div>
-        <div class="activity_center">
-          <div class="youhui">优惠</div>
-          <div class="activity_desc">
-            <span>一键咨询更多打折优惠</span>
-          </div>
-          <div class="lijlingqu" @click="showSubscribe('优惠领取')">立即领取</div>
-        </div>
-        <div class="activity_right">
-          <div class="semi-circle"></div>
-        </div>
-    </div>
+    <Activity-red-package  @showDalog="showRedPackage()"></Activity-red-package>
     <div class="more-housing-estate">
       <span>更多楼盘信息</span>
     </div>
@@ -46,6 +32,7 @@
 <script>
 import "./housingEstateMore.scss";
 import CallModal from "../../../components/callModal/callModal";
+import ActivityRedPackage from './ActivityRedPackage';
 
 export default {
   name: "housing-estate-more",
@@ -58,6 +45,7 @@ export default {
   },
   components: {
     "call-modal": CallModal,
+    "Activity-red-package": ActivityRedPackage
   },
   created() {},
   mounted() {},
@@ -65,6 +53,9 @@ export default {
     showSubscribe(type) {
       this.$emit('showDalog', type);
     },
+    showRedPackage() {
+      this.$emit('showRedPackage')
+    }
   }
 };
 </script>

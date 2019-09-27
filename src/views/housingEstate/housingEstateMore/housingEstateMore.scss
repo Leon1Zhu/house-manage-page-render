@@ -1,80 +1,82 @@
 @import "../../../styles/globalscss";
 
+
+.housing-estate-activity {
+  background-color: #FFDBD7;
+  width: vm(345);
+  height: vm(40);
+  display: flex;
+  flex-direction: row;
+  .activity_left {
+    width: vm(20);
+    height: vm(40);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .semi-circle {
+      width: vm(8);
+      height: vm(16);
+      background-color: #ffffff;
+      border-radius: 0 vm(8) vm(8) 0;
+    }
+  }
+  .activity_center {
+    width: vm(305);
+    height: vm(40);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    div {
+      font-family: PingFangSC;
+      font-size: vm(13);
+      line-height: vm(19);
+    }
+    .activity_desc {
+      width: vm(205);
+      text-align: left;
+      span {
+        color: #825C59;
+        font-size: vm(13);
+        line-height: vm(19);
+      }
+    }
+    .youhui{
+      width: vm(35);
+      height: vm(23);
+      text-align: center;
+      color: #ffffff;
+      background-color: #F54A2F;
+      padding-top: vm(2);
+    }
+    .lijlingqu {
+      width: vm(60);
+      height: vm(19);
+      text-align: center;
+      color: #ffffff;
+      background-color: #F54A2F;
+    }
+
+  }
+  .activity_right {
+    width: vm(20);
+    height: vm(40);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    .semi-circle {
+      width: vm(8);
+      height: vm(16);
+      background-color: #ffffff;
+      border-radius: vm(8) 0 0 vm(8);
+    }
+  }
+}
+
 .housing-estate-more {
     border-bottom:  vm(1) solid rgba(126, 125, 125, 0.27);
     padding-bottom: 20px;
-    .housing-estate-activity {
-        background-color: #FFDBD7;
-        width: vm(345);
-        height: vm(40);
-        display: flex;
-        flex-direction: row;
-        .activity_left {
-            width: vm(20);
-            height: vm(40);
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            .semi-circle {
-                width: vm(8);
-                height: vm(16);
-                background-color: #ffffff;
-                border-radius: 0 vm(8) vm(8) 0;
-            }
-        }
-        .activity_center {
-            width: vm(305);
-            height: vm(40);
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            div {
-                font-family: PingFangSC;
-                font-size: vm(13);
-                line-height: vm(19);
-            }
-            .activity_desc {
-                width: vm(205);
-                text-align: left;
-                span {
-                    color: #825C59;
-                    font-size: vm(13);
-                    line-height: vm(19);
-                }
-            }
-            .youhui{
-                width: vm(35);
-                height: vm(23);
-                text-align: center;
-                color: #ffffff;
-                background-color: #F54A2F;
-                padding-top: vm(2);
-            }
-            .lijlingqu {
-                width: vm(60);
-                height: vm(19);
-                text-align: center;
-                color: #ffffff;
-                background-color: #F54A2F;
-            }
-            
-        }
-        .activity_right {
-            width: vm(20);
-            height: vm(40);
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
-            .semi-circle {
-                width: vm(8);
-                height: vm(16);
-                background-color: #ffffff;
-                border-radius: vm(8) 0 0 vm(8);
-            }
-        }
-    }
     .more-housing-estate {
         width: 100%;
         height: vm(45);

@@ -1,0 +1,42 @@
+@import "../../../styles/globalscss";
+.consultant {
+  &-content {
+    margin-top: vm(10);
+    display: flex;
+    align-items: center;
+  }
+  .kf-img {
+    width: vm(50);
+    border-radius: 100%;
+  }
+  .kf-text {
+    margin-left: vm(10);
+    .top {
+      color: #009ee3;
+      font-size: vm(12);
+    }
+    .bottom {
+      margin-top: vm(5);
+      font-size: vm(14);
+    }
+  }
+  a {
+    flex: 1;
+    text-align: right;
+    .tel-content {
+      background: rgb(0,121, 215);
+      color: white;
+      width: vm(40);
+      height: vm(40);
+      display: inline-block;
+      border-radius: 100%;
+      line-height: vm(43);
+      text-align: center;
+      .icon {
+        width: vm(23);
+        height: vm(23);
+      }
+    }
+  }
+
+}
